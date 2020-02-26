@@ -1,0 +1,10 @@
+﻿@model IEnumerable<Car>
+
+@foreach(var p in Model)
+{
+    <div>
+        <h3>@p.Model</h3>
+        <h4>@p.Price.ToString("c")</h4>
+   </div>
+}
+
