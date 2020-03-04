@@ -19,8 +19,15 @@ using KlioCarProject.Models;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 2 "E:\!Study\4sem\OOP\KlioCarProject\KlioCarProject\Views\_ViewImports.cshtml"
+using KlioCarProject.Models.ViewModels;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"f9dded243083d4c4138564af73deb81ec1fbb424", @"/Views/_ViewStart.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7e0701cdaeb151162bb163940cbc143d09f2d885", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"a36f462a709d8718434df65aef5cdd037c3048ae", @"/Views/_ViewImports.cshtml")]
     public class Views__ViewStart : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

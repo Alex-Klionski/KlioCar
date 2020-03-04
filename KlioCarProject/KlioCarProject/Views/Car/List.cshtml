@@ -1,10 +1,12 @@
-﻿@model IEnumerable<Car>
-
-@foreach(var p in Model)
+﻿@model CarsListViewModel
+@foreach (var p in Model.Cars)
 {
-    <div>
-        <h3>@p.Model</h3>
-        <h4>@p.Price.ToString("c")</h4>
-   </div>
+    @Html.Partial("CarSummary", p);
 }
+
+<div page-model="@Model.PagingInfo" page-action="List" page-classes-enabled="true"
+     page-class="btn" page-class-normal="btn-secondary"
+     page-class-selected="btn-primary" class="btn-group pull-right m-1">
+</div>
+
 
