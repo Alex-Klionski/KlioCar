@@ -16,7 +16,8 @@ namespace KlioCarProject.Models
         public string Model { get; set; }
         public string Type { get; set; }
         public string Engine { get; set; }
-        public ClassCar? ClassCar { get; set; }
+        //public ClassCar? ClassCar { get; set; }
+        public string Category { get; set; }
 
     }
 }

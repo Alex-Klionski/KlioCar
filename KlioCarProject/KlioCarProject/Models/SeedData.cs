@@ -13,43 +13,62 @@ namespace KlioCarProject.Models {
             context.Database.Migrate();
             if (!context.Cars.Any()) {
                 context.Cars.AddRange(
-                    new Car {
+                    new Car
+                    {
                         Model = "Tesla",
-                        Price = 54
+                        Price = 54,
+                        Category = "CClass"
+
                     },
-                    new Car {
+                    new Car
+                    {
                         Model = "Tesla",
-                        Price = 52
+                        Price = 52,
+                        Category = "CClass"
                     },
-                    new Car {
+                    new Car
+                    {
                         Model = "Tesla",
-                        Price = 1525
+                        Price = 1525,
+                        Category = "CClass"
                     },
-                    new Car {
+                    new Car
+                    {
                         Model = "Tesla",
-                        Price = 123
+                        Price = 123,
+                        Category = "CClass"
                     },
-                    new Car {
+                    new Car
+                    {
                         Model = "Tesla",
-                        Price = 514
+                        Price = 514,
+                        Category = "CClass"
                     },
-                    new Car {
+                    new Car
+                    {
                         Model = "Tesla",
-                        Price = 544
+                        Price = 544,
+                        Category = "CClass"
                     },
-                    new Car {
+                    new Car
+                    {
                         Model = "Tesla",
-                        Price = 552
+                        Price = 552,
+                        Category = "CClass"
                     },
-                    new Car {
+                    new Car
+                    {
                         Model = "Tesla",
-                        Price = 5451
+                        Price = 5451,
+                        Category = "CClass"
                     },
-                    new Car {
+                    new Car
+                    {
                         Model = "Tesla",
-                        Price = 5414
+                        Price = 5414,
+                        Category = "CClass"
                     }
-                );
+                ) ;
                 context.SaveChanges();
             }
         }

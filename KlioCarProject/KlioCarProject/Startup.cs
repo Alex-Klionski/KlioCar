@@ -40,26 +40,36 @@ namespace KlioCarProject
             app.UseStaticFiles();
             app.UseStatusCodePages();
 
-
-            /*app.UseEndpoints(endpoints =>
-            {
-                
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Car}/{action=List}/{id?}");
-            });*/
+            //Navigation
 
             app.UseMvc(routes =>
             {
-                routes.MapRoute(
-                     name: "pagination",
-                     template: "Cars/Page{productPage}",
-                     defaults: new { Controller = "Car", action = "List" });
+            routes.MapRoute(
+                name: null,
+                template: "{category}/Page{productPage:int}",
+                defaults: new { controller = "Car", action = "List" }
+                );
 
-                routes.MapRoute(
-                     name: "default",
-                     template: "{controller=Car}/{action=List}/{id?}");
-            });
+            routes.MapRoute(
+                 name: null,
+                 template: "Page{productPage:int}",
+                 defaults: new { controller = "Car", action = "List", productPage = 1 }
+                 );
+
+            routes.MapRoute(
+                name: null,
+                template: "{category}",
+                defaults: new { controller = "Car", action = "List", productPage = 1 }
+                );
+
+            routes.MapRoute(
+                 name: null,
+                 template: "",
+                 defaults: new { controller = "Car", action = "List", productPage = 1 }
+                 );
+
+            routes.MapRoute(name: null, template: "{controller}/{action}/{id?}");
+            }); 
 
             SeedData.EnsurePopulated(app);
         }

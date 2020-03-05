@@ -214,3 +214,4 @@ E:\!Study\4sem\OOP\KlioCarProject\KlioCarProject.Tests\bin\Debug\netcoreapp3.1\K
 E:\!Study\4sem\OOP\KlioCarProject\KlioCarProject.Tests\bin\Debug\netcoreapp3.1\KlioCarProject.pdb
 E:\!Study\4sem\OOP\KlioCarProject\KlioCarProject.Tests\obj\Debug\netcoreapp3.1\KlioCarProject.Tests.dll
 E:\!Study\4sem\OOP\KlioCarProject\KlioCarProject.Tests\obj\Debug\netcoreapp3.1\KlioCarProject.Tests.pdb
+E:\!Study\4sem\OOP\KlioCarProject\KlioCarProject.Tests\bin\Debug\netcoreapp3.1\bower.json

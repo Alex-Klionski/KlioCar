@@ -17,11 +17,11 @@ namespace KlioCarProject.Tests
         {
             Mock<ICarRepository> mock = new Mock<ICarRepository>();
             mock.Setup(m => m.Cars).Returns((new Car[] {
-                new Car { CarID = 1, Model = "P1" },
-                new Car { CarID = 2, Model = "P2" },
-                new Car { CarID = 3, Model = "P3" },
-                new Car { CarID = 4, Model = "P4" },
-                new Car { CarID = 5, Model = "P5" }
+                new Car { CarID = 1, Model = "P1", Category = "AClass" },
+                new Car { CarID = 2, Model = "P2", Category = "CClass" },
+                new Car { CarID = 3, Model = "P3", Category = "CClass" },
+                new Car { CarID = 4, Model = "P4", Category = "CClass" },
+                new Car { CarID = 5, Model = "P5", Category = "CClass" }
             }).AsQueryable<Car>());
 
             //Organization
@@ -30,7 +30,7 @@ namespace KlioCarProject.Tests
 
             //Action
             /*IEnumerable<Car> result = controller.List(2).ViewData.Model as IEnumerable<Car>;*/
-            CarsListViewModel result = controller.List(2).ViewData.Model as CarsListViewModel;
+            CarsListViewModel result = controller.List(null, 2).ViewData.Model as CarsListViewModel;
 
 
 
@@ -41,5 +41,35 @@ namespace KlioCarProject.Tests
 
             
         }
+
+        [Fact]
+        public void Can_Filter_Category()
+        {
+            Mock<ICarRepository> mock = new Mock<ICarRepository>();
+            mock.Setup(m => m.Cars).Returns((new Car[] {
+                new Car { CarID = 1, Model = "P1", Category = "AClass" },
+                new Car { CarID = 2, Model = "P2", Category = "CClass" },
+                new Car { CarID = 3, Model = "P3", Category = "CClass" },
+                new Car { CarID = 4, Model = "P4", Category = "AClass" },
+                new Car { CarID = 5, Model = "P5", Category = "CClass" }
+            }).AsQueryable<Car>());
+
+            //Organization
+            CarController controller = new CarController(mock.Object);
+            controller.PageSize = 3;
+
+            //Action
+
+            Car[] result = (controller.List("AClass", 1).ViewData.Model as CarsListViewModel).Cars.ToArray();
+
+
+            //Assertion
+            Assert.Equal(2, result.Length);
+            Assert.True(result[0].Model == "P1", result[0].Category = "AClass");
+            Assert.True(result[1].Model == "P4", result[0].Category = "AClass");
+            
+
+        }
+
     }
 }

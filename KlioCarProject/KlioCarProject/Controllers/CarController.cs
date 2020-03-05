@@ -13,10 +13,11 @@ namespace KlioCarProject.Controlles
         private ICarRepository repository;
         public int PageSize = 4;
         public CarController(ICarRepository repository) { this.repository = repository; }
-        public ViewResult List(int productPage = 1)
+        public ViewResult List(string category, int productPage = 1)
             =>View(new CarsListViewModel
             {
                 Cars = repository.Cars
+                .Where(p => category == null || p.Category == category) // fix 
                 .OrderBy(p => p.CarID)
                 .Skip((productPage - 1) * PageSize)
                 .Take(PageSize),
@@ -25,7 +26,8 @@ namespace KlioCarProject.Controlles
                     CurrentPage = productPage,
                     ItemsPerPage = PageSize,
                     TotalItems = repository.Cars.Count()
-                }
+                },
+                CurrentCategory = category
             });
 
       /*  public ViewResult List(int productPage = 1) 
