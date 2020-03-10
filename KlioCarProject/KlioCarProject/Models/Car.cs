@@ -5,10 +5,6 @@ using System.Threading.Tasks;
 
 namespace KlioCarProject.Models
 {
-    public enum ClassCar
-    {
-        AClass, BClass, CClass, DClass, EClass, FClass, JClass, MClass, SClass
-    }
     public class Car
     {
         public int CarID { get; set; }
@@ -16,7 +12,6 @@ namespace KlioCarProject.Models
         public string Model { get; set; }
         public string Type { get; set; }
         public string Engine { get; set; }
-        //public ClassCar? ClassCar { get; set; }
         public string Category { get; set; }
 
     }

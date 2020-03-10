@@ -25,7 +25,7 @@ namespace KlioCarProject.Controlles
                 {
                     CurrentPage = productPage,
                     ItemsPerPage = PageSize,
-                    TotalItems = repository.Cars.Count()
+                    TotalItems = category == null ? repository.Cars.Count() : repository.Cars.Where(e => e.Category == category).Count()
                 },
                 CurrentCategory = category
             });

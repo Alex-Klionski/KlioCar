@@ -17,6 +17,7 @@ namespace KlioCarProject.Components
         
         public IViewComponentResult Invoke()
         {
+            ViewBag.SelectedCategory = RouteData?.Values["category"];
             return View(repository.Cars
                 .Select(x => x.Category)
                 .Distinct()

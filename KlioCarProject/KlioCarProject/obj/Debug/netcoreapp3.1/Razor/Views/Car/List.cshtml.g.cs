@@ -26,8 +26,15 @@ using KlioCarProject.Models.ViewModels;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "E:\!Study\4sem\OOP\KlioCarProject\KlioCarProject\Views\_ViewImports.cshtml"
+using KlioCarProject.Infrastructure;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"73763a6c014ef26dd857d685956d3a5320913b47", @"/Views/Car/List.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"a36f462a709d8718434df65aef5cdd037c3048ae", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"fdc1648b8915db15c8c7465a9d16624b2c757252", @"/Views/_ViewImports.cshtml")]
     public class Views_Car_List : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<CarsListViewModel>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("page-action", "List", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -84,7 +91,7 @@ Write(Html.Partial("CarSummary", p));
 #line hidden
 #nullable disable
             WriteLiteral("\r\n");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("div", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "73763a6c014ef26dd857d685956d3a5320913b475229", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("div", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "73763a6c014ef26dd857d685956d3a5320913b475422", async() => {
                 WriteLiteral("\r\n");
             }
             );

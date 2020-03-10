@@ -147,3 +147,5 @@ E:\!Study\4sem\OOP\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\KlioCar
 E:\!Study\4sem\OOP\KlioCarProject\KlioCarProject\bin\Debug\netcoreapp3.1\bower.json
 E:\!Study\4sem\OOP\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\KlioCarProject.MvcApplicationPartsAssemblyInfo.cache
 E:\!Study\4sem\OOP\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\Razor\Views\Shared\CarSummary.cshtml.g.cs
+E:\!Study\4sem\OOP\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\NavigationMenu\Default.cshtml.g.cs
+E:\!Study\4sem\OOP\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\Razor\Views\Cart\Index.cshtml.g.cs

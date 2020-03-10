@@ -7,6 +7,14 @@ a.navbar-brand {
   word-break: break-all;
 }
 
+.header-nav {
+    align-content: center;
+    align-items: center;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+}
+
 /* Provide sufficient contrast against white background */
 a {
   color: #0366d6;

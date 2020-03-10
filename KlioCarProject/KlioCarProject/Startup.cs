@@ -22,6 +22,11 @@ namespace KlioCarProject
         public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services)
         {
+            //Session support
+            services.AddMemoryCache();
+            services.AddSession();
+            services.AddDistributedMemoryCache();
+           
             services.AddTransient<ICarRepository, EFCarRepository>();
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
@@ -39,6 +44,7 @@ namespace KlioCarProject
             app.UseRouting();
             app.UseStaticFiles();
             app.UseStatusCodePages();
+            app.UseSession();
 
             //Navigation
 
