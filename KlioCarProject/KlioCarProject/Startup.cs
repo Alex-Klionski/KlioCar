@@ -26,11 +26,17 @@ namespace KlioCarProject
             services.AddMemoryCache();
             services.AddSession();
             services.AddDistributedMemoryCache();
-           
+
+            // Registration session
+            services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
             services.AddTransient<ICarRepository, EFCarRepository>();
+            services.AddTransient<IOrderRepository, EFOrderRepository>();
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddMvc(option => option.EnableEndpointRouting = false);
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -75,7 +81,9 @@ namespace KlioCarProject
                  );
 
             routes.MapRoute(name: null, template: "{controller}/{action}/{id?}");
-            }); 
+            });
+
+            
 
             SeedData.EnsurePopulated(app);
         }

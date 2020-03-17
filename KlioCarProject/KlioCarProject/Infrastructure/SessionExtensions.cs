@@ -18,7 +18,7 @@ namespace KlioCarProject.Infrastructure
         {
             var sessionData = session.GetString(key);
             return sessionData == null
-                ? default: JsonConvert.DeserializeObject<T>(sessionData);
+                ? default : JsonConvert.DeserializeObject<T>(sessionData);
         }
     }
 }

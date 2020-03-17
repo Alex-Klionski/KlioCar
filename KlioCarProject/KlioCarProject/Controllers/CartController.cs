@@ -16,19 +16,19 @@ namespace KlioCarProject.Controllers
     {
         private ICarRepository repository;
         public CartController(ICarRepository repository) { this.repository = repository; }
-        public ViewResult Index(string resultUrl)
+        public ViewResult Index(string returnUrl)
         {
             return View(new CartIndexViewМodel
             {
                 Cart = GetCart(),
-                ReturnUrl = resultUrl
+                ReturnUrl = returnUrl
             });
         }
         public RedirectToActionResult AddToCart(int carID, string returnUrl)
         {
             Car car = repository.Cars.FirstOrDefault(p => p.CarID == carID);
 
-            if(car != null)
+            if (car != null)
             {
                 Cart cart = GetCart();
                 cart.AddItem(car, 1);
@@ -53,7 +53,7 @@ namespace KlioCarProject.Controllers
         private Cart GetCart()
         {
             Cart cart = HttpContext.Session.GetJson<Cart>("Cart") ?? new Cart();
-         
+
             return cart;
         }
         private void SaveCart(Cart cart)
@@ -61,5 +61,5 @@ namespace KlioCarProject.Controllers
             HttpContext.Session.SetJson("Cart", cart);
         }
     }
-    
+
 }

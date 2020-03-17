@@ -144,8 +144,11 @@ E:\!Study\4sem\OOP\KlioCarProject\KlioCarProject\bin\Debug\netcoreapp3.1\runtime
 E:\!Study\4sem\OOP\KlioCarProject\KlioCarProject\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
 E:\!Study\4sem\OOP\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\KlioCarProject.Migrations.Initial.resources
 E:\!Study\4sem\OOP\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\KlioCarProject.csproj.GenerateResource.cache
-E:\!Study\4sem\OOP\KlioCarProject\KlioCarProject\bin\Debug\netcoreapp3.1\bower.json
-E:\!Study\4sem\OOP\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\KlioCarProject.MvcApplicationPartsAssemblyInfo.cache
 E:\!Study\4sem\OOP\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\Razor\Views\Shared\CarSummary.cshtml.g.cs
 E:\!Study\4sem\OOP\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\NavigationMenu\Default.cshtml.g.cs
 E:\!Study\4sem\OOP\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\Razor\Views\Cart\Index.cshtml.g.cs
+E:\!Study\4sem\OOP\KlioCarProject\KlioCarProject\bin\Debug\netcoreapp3.1\bower.json
+E:\!Study\4sem\OOP\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\KlioCarProject.MvcApplicationPartsAssemblyInfo.cache
+E:\!Study\4sem\OOP\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\CartSummary\Default.cshtml.g.cs
+E:\!Study\4sem\OOP\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\Razor\Views\Order\Checkout.cshtml.g.cs
+E:\!Study\4sem\OOP\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\KlioCarProject.Migrations.Orders.resources

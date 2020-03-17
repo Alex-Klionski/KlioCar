@@ -14,7 +14,7 @@ namespace KlioCarProject.Models
                 .Where(p => p.Car.CarID == car.CarID)
                 .FirstOrDefault();
 
-            if(line == null)
+            if (line == null)
             {
                 lineCollection.Add(new CartLine
                 {
