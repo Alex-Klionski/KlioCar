@@ -9,8 +9,8 @@ namespace KlioCarProject.Models {
         public static void EnsurePopulated(IApplicationBuilder app) {
             ApplicationDbContext context = app.ApplicationServices
                 .GetRequiredService<ApplicationDbContext>();
-            //context.Database.EnsureCreated();
-            context.Database.Migrate();
+            context.Database.EnsureCreated();
+           // context.Database.Migrate();
             if (!context.Cars.Any()) {
                 context.Cars.AddRange(
                     new Car

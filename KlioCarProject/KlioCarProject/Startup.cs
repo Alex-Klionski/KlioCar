@@ -33,6 +33,7 @@ namespace KlioCarProject
 
             services.AddTransient<ICarRepository, EFCarRepository>();
             services.AddTransient<IOrderRepository, EFOrderRepository>();
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddMvc(option => option.EnableEndpointRouting = false);
