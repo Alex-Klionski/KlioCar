@@ -150,3 +150,7 @@ E:\!Study\4sem\OOP\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\KlioCar
 E:\!Study\4sem\OOP\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\CartSummary\Default.cshtml.g.cs
 E:\!Study\4sem\OOP\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\Razor\Views\Order\Checkout.cshtml.g.cs
 E:\!Study\4sem\OOP\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\Razor\Views\Order\Completed.cshtml.g.cs
+E:\!Study\4sem\OOP\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\Razor\Views\Order\List.cshtml.g.cs
+E:\!Study\4sem\OOP\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_AdminLayout.cshtml.g.cs
+E:\!Study\4sem\OOP\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Index.cshtml.g.cs
+E:\!Study\4sem\OOP\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Edit.cshtml.g.cs

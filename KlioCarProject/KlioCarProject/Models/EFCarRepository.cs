@@ -13,5 +13,26 @@ namespace KlioCarProject.Models
             context = ctx;
         }
         public IQueryable<Car> Cars => context.Cars;
+        
+        public void SaveCar(Car car)
+        {
+            if(car.CarID == 0)
+            {
+                context.Cars.Add(car);
+            }
+            else
+            {
+                Car dbEntry = context.Cars.FirstOrDefault(p => p.CarID == car.CarID);
+                if(dbEntry != null)
+                {
+                    dbEntry.Model = car.Model;
+                    dbEntry.Category = car.Category;
+                    dbEntry.Price = car.Price;
+                    dbEntry.Type = car.Type;
+                    dbEntry.Engine = car.Engine;
+                }
+            }
+            context.SaveChanges();
+        }
     }
 }

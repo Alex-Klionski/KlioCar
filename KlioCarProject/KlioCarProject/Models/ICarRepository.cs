@@ -8,5 +8,7 @@ namespace KlioCarProject.Models
     public interface ICarRepository
     {
         IQueryable<Car> Cars { get; }
+        void SaveCar(Car car);
+        
     }
 }
