@@ -30,5 +30,16 @@ namespace KlioCarProject.Controllers
                 return View(car);
             }
         }
+        public ViewResult Create() => View("Edit", new Car());
+        [HttpPost]
+        public IActionResult Delete(int carId)
+        {
+            Car deletedCar = repository.DeleteCar(carId);
+            if(deletedCar != null)
+            {
+                TempData["message"] = $"{deletedCar.Model} was deleted";
+            }
+            return RedirectToAction("Index");
+        }
     }
 }

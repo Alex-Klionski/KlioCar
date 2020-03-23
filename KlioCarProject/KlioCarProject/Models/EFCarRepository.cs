@@ -34,5 +34,15 @@ namespace KlioCarProject.Models
             }
             context.SaveChanges();
         }
+        public Car DeleteCar(int carID)
+        {
+            Car dbEntry = context.Cars.FirstOrDefault(p => p.CarID == carID);
+            if(dbEntry != null)
+            {
+                context.Cars.Remove(dbEntry);
+                context.SaveChanges();
+            }
+            return dbEntry;
+        }
     }
 }

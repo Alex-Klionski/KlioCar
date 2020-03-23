@@ -64,7 +64,27 @@ namespace KlioCarProject.Tests
             Assert.Equal(2, p2.CarID);
             Assert.Equal(3, p3.CarID);
         }
+        [Fact]
+        public void Can_Delete_Car()
+        {
+            Car car2 = new Car { CarID = 2, Model = "Tesla" };
+            Mock<ICarRepository> mock = new Mock<ICarRepository>();
+            mock.Setup(m => m.Cars).Returns((new Car[]
+            {
+                new Car {CarID = 1, Model = "P1"},
+                car2,
+                new Car {CarID  = 3, Model = "P3"}
+            }).AsQueryable<Car>());
 
+            AdminController target = new AdminController(mock.Object);
+
+            //Action 
+
+            target.Delete(car2.CarID);
+
+            //Assertion
+            mock.Verify(m => m.DeleteCar(car2.CarID));
+        }
  
     }
 }

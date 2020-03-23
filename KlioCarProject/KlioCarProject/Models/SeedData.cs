@@ -15,58 +15,68 @@ namespace KlioCarProject.Models {
                 context.Cars.AddRange(
                     new Car
                     {
-                        Model = "Tesla",
-                        Price = 54,
-                        Category = "CClass"
+                        Model = "Citroen C1",
+                        Price = 250,
+                        Category = "AClass",
+                        Type = "hatchback",
+                        Engine = "1.0"
 
                     },
                     new Car
                     {
-                        Model = "Tesla",
-                        Price = 52,
-                        Category = "CClass"
+                        Model = "Renault Logan",
+                        Price = 290,
+                        Category = "BClass",
+                        Type = "hatchback",
+                        Engine = "2.2"
                     },
                     new Car
                     {
-                        Model = "Tesla",
-                        Price = 1525,
-                        Category = "CClass"
+                        Model = "Skoda Octavia",
+                        Price = 330,
+                        Category = "CClass",
+                        Type = "sedan",
+                        Engine = "2.3"
                     },
                     new Car
                     {
-                        Model = "Tesla",
-                        Price = 123,
-                        Category = "CClass"
+                        Model = "Skoda Octavia",
+                        Price = 330,
+                        Category = "CClass",
+                        Type = "sedan",
+                        Engine = "2.3"
                     },
                     new Car
                     {
-                        Model = "Tesla",
+                        Model = "Audi A4",
                         Price = 514,
-                        Category = "CClass"
+                        Category = "DClass",
+                        Type = "sedan",
+                        Engine = "2.5"
                     },
                     new Car
                     {
-                        Model = "Tesla",
+                        Model = "Honda Legend",
                         Price = 544,
-                        Category = "CClass"
+                        Category = "EClass",
+                        Type = "universal",
+                        Engine = "2.5"
                     },
                     new Car
                     {
-                        Model = "Tesla",
-                        Price = 552,
-                        Category = "CClass"
+                        Model = "Rolls Royce Phantom",
+                        Price = 830,
+                        Category = "FClass",
+                        Type = "universal",
+                        Engine = "3.4"
                     },
                     new Car
                     {
-                        Model = "Tesla",
-                        Price = 5451,
-                        Category = "CClass"
-                    },
-                    new Car
-                    {
-                        Model = "Tesla",
-                        Price = 5414,
-                        Category = "CClass"
+                        Model = "Volkswagen Touareg",
+                        Price = 750,
+                        Category = "JClass",
+                        Type = "crossover",
+                        Engine = "5.0"
                     }
                 ) ;
                 context.SaveChanges();
