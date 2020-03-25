@@ -4,13 +4,22 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using KlioCarProject.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace KlioCarProject.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
         private ICarRepository repository;
-        public AdminController(ICarRepository repo) { repository = repo; }
+        private UserManager<AppUser> userManager;
+        public AdminController(ICarRepository repo, UserManager<AppUser> usrMng) 
+        {
+            repository = repo; 
+            userManager = usrMng; 
+        }
+        public ViewResult Users() => View(userManager.Users);
         public IActionResult Index()
         {
             return View(repository.Cars);

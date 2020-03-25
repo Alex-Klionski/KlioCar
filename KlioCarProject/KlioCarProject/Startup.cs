@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using KlioCarProject.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace KlioCarProject
 {
@@ -34,9 +35,19 @@ namespace KlioCarProject
             services.AddTransient<ICarRepository, EFCarRepository>();
             services.AddTransient<IOrderRepository, EFOrderRepository>();
 
+            //Add databases
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+
+            services.AddDbContext<AppIdentityDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
+
+            services.AddIdentity<AppUser, IdentityRole>()
+                .AddEntityFrameworkStores<AppIdentityDbContext>().AddDefaultTokenProviders();
+
             services.AddMvc(option => option.EnableEndpointRouting = false);
+
 
         }
 
@@ -48,6 +59,8 @@ namespace KlioCarProject
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseAuthentication();
+            app.UseAuthorization();
             app.UseRouting();
             app.UseStaticFiles();
             app.UseStatusCodePages();
@@ -84,9 +97,10 @@ namespace KlioCarProject
             routes.MapRoute(name: null, template: "{controller}/{action}/{id?}");
             });
 
-            
 
+            
             SeedData.EnsurePopulated(app);
+            //IdentitySeedData.EnsurePopulated(app);
         }
     }
 }
