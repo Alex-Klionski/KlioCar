@@ -127,7 +127,6 @@ E:\!Study\4sem\OOP\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\Razor\V
 E:\!Study\4sem\OOP\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\Razor\Views\Order\List.cshtml.g.cs
 E:\!Study\4sem\OOP\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_AdminLayout.cshtml.g.cs
 E:\!Study\4sem\OOP\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Index.cshtml.g.cs
-E:\!Study\4sem\OOP\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Edit.cshtml.g.cs
 E:\!Study\4sem\OOP\KlioCarProject\KlioCarProject\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
 E:\!Study\4sem\OOP\KlioCarProject\KlioCarProject\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 E:\!Study\4sem\OOP\KlioCarProject\KlioCarProject\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
@@ -161,3 +160,5 @@ E:\!Study\4sem\OOP\KlioCarProject\KlioCarProject\bin\Debug\netcoreapp3.1\runtime
 E:\!Study\4sem\OOP\KlioCarProject\KlioCarProject\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
 E:\!Study\4sem\OOP\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\KlioCarProject.MvcApplicationPartsAssemblyInfo.cache
 E:\!Study\4sem\OOP\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Users.cshtml.g.cs
+E:\!Study\4sem\OOP\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\Razor\Views\Admin\EditCar.cshtml.g.cs
+E:\!Study\4sem\OOP\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\Razor\Views\Admin\CreateUser.cshtml.g.cs

@@ -12,6 +12,7 @@ namespace KlioCarProject.Models
     {
         public AppIdentityDbContext(DbContextOptions<AppIdentityDbContext> options):base(options)
         {
+            //Database.EnsureCreated();
         }
 
     }

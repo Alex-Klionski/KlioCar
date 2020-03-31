@@ -17,8 +17,8 @@
             <td>@item.Model</td>
             <td class="text-right">@item.Price.ToString("c")</td>
             <td class="text-center">
-                <form asp-action="Delete" method="post">
-                    <a asp-action="Edit" class="btn btn-sm btn-warning" asp-route-carId="@item.CarID">
+                <form asp-action="DeleteCar" method="post">
+                    <a asp-action="EditCar" class="btn btn-sm btn-warning" asp-route-carId="@item.CarID">
                         Edit
                     </a>
                     <input type="hidden" name="CarID" value="@item.CarID"/>
@@ -29,6 +29,6 @@
     }
 </table>
 <div class="text-center">
-    <a asp-action="Create" class="btn btn-primary">Add Car</a>
+    <a asp-action="CreateCar" class="btn btn-primary">Add Car</a>
     <a asp-action="Users" class="btn btn-primary">Users</a>
 </div>

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using KlioCarProject.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using KlioCarProject.Models.ViewModels;
 
 namespace KlioCarProject.Controllers
 {
@@ -24,9 +25,66 @@ namespace KlioCarProject.Controllers
         {
             return View(repository.Cars);
         }
-        public ViewResult Edit(int carId) => View(repository.Cars.FirstOrDefault(p => p.CarID == carId));
+        public ViewResult CreateUser() => View();
+
         [HttpPost]
-        public IActionResult Edit(Car car)
+        public async Task<IActionResult> CreateUser(CreateModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                AppUser user = new AppUser(model.Name)
+                {
+                    UserName = model.Name,
+                    Email = model.Email
+                };
+                IdentityResult result = await userManager.CreateAsync(user, model.Password);
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    foreach (IdentityError error in result.Errors)
+                    {
+                        ModelState.AddModelError("", error.Description);
+                    }
+                }
+            }
+            return View(model);
+        }
+        [HttpPost]
+        public async Task<IActionResult> DeleteUser(string id)
+        {
+            AppUser user = await userManager.FindByIdAsync(id);
+            if (user != null)
+            {
+                IdentityResult result = await userManager.DeleteAsync(user);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    AddErrorsFromResult(result);
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("", "User Not Found");
+            }
+            return View("Index", userManager.Users);
+        }
+
+        private void AddErrorsFromResult(IdentityResult result)
+        {
+            foreach (IdentityError error in result.Errors)
+                ModelState.AddModelError("", error.Description);
+        }
+
+        public ViewResult EditCar(int carId) => View(repository.Cars.FirstOrDefault(p => p.CarID == carId));
+        [HttpPost]
+        public IActionResult EditCar(Car car)
         {
             if(ModelState.IsValid)
             {
@@ -39,9 +97,9 @@ namespace KlioCarProject.Controllers
                 return View(car);
             }
         }
-        public ViewResult Create() => View("Edit", new Car());
+        public ViewResult CreateCar() => View("EditCar", new Car());
         [HttpPost]
-        public IActionResult Delete(int carId)
+        public IActionResult DeleteCar(int carId)
         {
             Car deletedCar = repository.DeleteCar(carId);
             if(deletedCar != null)
@@ -50,5 +108,6 @@ namespace KlioCarProject.Controllers
             }
             return RedirectToAction("Index");
         }
+       
     }
 }
