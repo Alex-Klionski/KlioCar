@@ -10194,11 +10194,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\!Study\\4sem\\OOP\\KlioCarProject\\KlioCarProject.Tests\\KlioCarProject.Tests.csproj",
+      "projectUniqueName": "E:\\!Study\\4sem\\OOP\\KlioCar\\KlioCarProject\\KlioCarProject.Tests\\KlioCarProject.Tests.csproj",
       "projectName": "KlioCarProject.Tests",
-      "projectPath": "E:\\!Study\\4sem\\OOP\\KlioCarProject\\KlioCarProject.Tests\\KlioCarProject.Tests.csproj",
+      "projectPath": "E:\\!Study\\4sem\\OOP\\KlioCar\\KlioCarProject\\KlioCarProject.Tests\\KlioCarProject.Tests.csproj",
       "packagesPath": "C:\\Users\\leshk\\.nuget\\packages\\",
-      "outputPath": "E:\\!Study\\4sem\\OOP\\KlioCarProject\\KlioCarProject.Tests\\obj\\",
+      "outputPath": "E:\\!Study\\4sem\\OOP\\KlioCar\\KlioCarProject\\KlioCarProject.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -10217,8 +10217,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "E:\\!Study\\4sem\\OOP\\KlioCarProject\\KlioCarProject\\KlioCarProject.csproj": {
-              "projectPath": "E:\\!Study\\4sem\\OOP\\KlioCarProject\\KlioCarProject\\KlioCarProject.csproj"
+            "E:\\!Study\\4sem\\OOP\\KlioCar\\KlioCarProject\\KlioCarProject\\KlioCarProject.csproj": {
+              "projectPath": "E:\\!Study\\4sem\\OOP\\KlioCar\\KlioCarProject\\KlioCarProject\\KlioCarProject.csproj"
             }
           }
         }

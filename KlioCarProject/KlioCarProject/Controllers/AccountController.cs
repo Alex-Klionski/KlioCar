@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace KlioCarProject.Controllers
 {
+    [Authorize]
     public class AccountController : Controller
     {
         private UserManager<AppUser> userManager;
@@ -47,14 +48,32 @@ namespace KlioCarProject.Controllers
                     if ((await signInManager.PasswordSignInAsync(user,
                             loginModel.Password, false, false)).Succeeded)
                     {
-                        return Redirect(loginModel?.ReturnUrl ?? "/Admin/Index");
+                        return Redirect(loginModel?.ReturnUrl ?? "/Account/Index");
                     }
                 }
             }
             ModelState.AddModelError("", "Invalid name or password");
             return View(loginModel);
         }
+        [Authorize]
+        public IActionResult Index() => View(GetData("Index"));
 
+        [Authorize(Roles = "Admins")]
+        public IActionResult OtherAction() => View("Index", GetData("OtherAction"));
+        private Dictionary<string, object> GetData(string actionName) => new Dictionary<string, object>
+        {
+            ["Action"] = actionName,
+            ["User"] = HttpContext.User.Identity.Name,
+            ["Authenticated"] = HttpContext.User.Identity.IsAuthenticated,
+            ["Auth Type"] = HttpContext.User.Identity.AuthenticationType,
+            ["In Users Role"] = HttpContext.User.IsInRole("Admins"),
+        };
+
+        [AllowAnonymous]
+        public IActionResult AccessDenied() => View();
+
+
+        [Authorize]
         public async Task<RedirectResult> Logout(string returnUrl = "/")
         {
             await signInManager.SignOutAsync();

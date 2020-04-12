@@ -10,15 +10,24 @@ using KlioCarProject.Models.ViewModels;
 
 namespace KlioCarProject.Controllers
 {
-    [Authorize]
+    [Authorize(Roles ="Admins")]
     public class AdminController : Controller
     {
         private ICarRepository repository;
         private UserManager<AppUser> userManager;
-        public AdminController(ICarRepository repo, UserManager<AppUser> usrMng) 
+
+        private IUserValidator<AppUser> userValidator;
+        private IPasswordValidator<AppUser> passwordValidator;
+        private IPasswordHasher<AppUser> passwordHasher;
+
+
+        public AdminController(ICarRepository repo, UserManager<AppUser> usrMng, IPasswordValidator<AppUser> passValid, IPasswordHasher<AppUser> passHasher, IUserValidator<AppUser> userValid)
         {
             repository = repo; 
-            userManager = usrMng; 
+            userManager = usrMng;
+            passwordValidator = passValid;
+            userValidator = userValid;
+            passwordHasher = passHasher;
         }
         public ViewResult Users() => View(userManager.Users);
         public IActionResult Index()
@@ -54,7 +63,7 @@ namespace KlioCarProject.Controllers
             return View(model);
         }
         [HttpPost]
-        public async Task<IActionResult> DeleteUser(string id)
+        public async Task<IActionResult>DeleteUser(string id)
         {
             AppUser user = await userManager.FindByIdAsync(id);
             if (user != null)
@@ -75,13 +84,54 @@ namespace KlioCarProject.Controllers
             }
             return View("Index", userManager.Users);
         }
-
-        private void AddErrorsFromResult(IdentityResult result)
+        public async Task<IActionResult>EditUser(string id)
         {
-            foreach (IdentityError error in result.Errors)
-                ModelState.AddModelError("", error.Description);
+            AppUser user = await userManager.FindByIdAsync(id);
+            if(user != null)
+            {
+                return View(user);
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
         }
-
+        [HttpPost]                     
+        public async Task<IActionResult>EditUser(string id, string email, string password)
+        {
+            AppUser user = await userManager.FindByIdAsync(id);
+            if(user != null)
+            {
+                user.Email = email;
+                IdentityResult validEmail = await userValidator.ValidateAsync(userManager, user);
+                if(!validEmail.Succeeded)
+                {
+                    AddErrorsFromResult(validEmail);
+                }
+                IdentityResult validPass = null;
+                if (!string.IsNullOrEmpty(password))
+                {
+                    validPass = await passwordValidator.ValidateAsync(userManager, user, password);
+                    if (validPass.Succeeded)
+                        user.PasswordHash = passwordHasher.HashPassword(user, password);
+                    else
+                        AddErrorsFromResult(validPass);
+                }
+                if ((validEmail.Succeeded && validPass == null) || (validEmail.Succeeded && password != string.Empty && validPass.Succeeded))
+                {
+                    IdentityResult result = await userManager.UpdateAsync(user);
+                    if (result.Succeeded)
+                        return RedirectToAction("Index");
+                    else
+                        AddErrorsFromResult(result);
+                }   
+            }
+            else
+            {
+                ModelState.AddModelError("", "User not Founded");
+            }
+            return View(user);
+        }
         public ViewResult EditCar(int carId) => View(repository.Cars.FirstOrDefault(p => p.CarID == carId));
         [HttpPost]
         public IActionResult EditCar(Car car)
@@ -108,6 +158,13 @@ namespace KlioCarProject.Controllers
             }
             return RedirectToAction("Index");
         }
-       
+
+        //ERRORS
+        private void AddErrorsFromResult(IdentityResult result)
+        {
+            foreach (IdentityError error in result.Errors)
+                ModelState.AddModelError("", error.Description);
+        }
+
     }
 }

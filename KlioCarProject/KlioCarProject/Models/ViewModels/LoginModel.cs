@@ -8,6 +8,7 @@ namespace KlioCarProject.Models.ViewModels
 {
     public class LoginModel
     {
+        [Required]
         public string Name { get; set; }
         [Required]
         [UIHint("password")]

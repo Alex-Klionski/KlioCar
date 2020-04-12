@@ -1,6 +1,9 @@
 ﻿@model Cart
-
 <div class="">
+    @if (User?.Identity?.IsAuthenticated != false)
+    {
+        <a asp-controller="Account" asp-action="Logout" class="btn btn-outline-danger btn-sm">Logout</a>
+    }
     @if (Model.Lines.Count() > 0)
     {
         <small class="navbar-text">

@@ -43,9 +43,11 @@ namespace KlioCarProject
             services.AddDbContext<AppIdentityDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
 
+            services.ConfigureApplicationCookie(opts => opts.LoginPath = "/Users/Login");
+
             services.AddIdentity<AppUser, IdentityRole>(opts => {
                 opts.User.RequireUniqueEmail = true;
-                opts.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyz";
+                //opts.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyz";
                 opts.Password.RequiredLength = 6;
                 opts.Password.RequireNonAlphanumeric = false;
                 opts.Password.RequireLowercase = false;
@@ -108,6 +110,8 @@ namespace KlioCarProject
 
             
             SeedData.EnsurePopulated(app);
+
+            AppIdentityDbContext.CreateAdminAccount(app.ApplicationServices, Configuration).Wait();
             //IdentitySeedData.EnsurePopulated(app);
         }
     }

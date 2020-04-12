@@ -8627,11 +8627,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\!Study\\4sem\\OOP\\KlioCarProject\\KlioCarProject\\KlioCarProject.csproj",
+      "projectUniqueName": "E:\\!Study\\4sem\\OOP\\KlioCar\\KlioCarProject\\KlioCarProject\\KlioCarProject.csproj",
       "projectName": "KlioCarProject",
-      "projectPath": "E:\\!Study\\4sem\\OOP\\KlioCarProject\\KlioCarProject\\KlioCarProject.csproj",
+      "projectPath": "E:\\!Study\\4sem\\OOP\\KlioCar\\KlioCarProject\\KlioCarProject\\KlioCarProject.csproj",
       "packagesPath": "C:\\Users\\leshk\\.nuget\\packages\\",
-      "outputPath": "E:\\!Study\\4sem\\OOP\\KlioCarProject\\KlioCarProject\\obj\\",
+      "outputPath": "E:\\!Study\\4sem\\OOP\\KlioCar\\KlioCarProject\\KlioCarProject\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

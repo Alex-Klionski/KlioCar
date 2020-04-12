@@ -52,7 +52,7 @@ namespace KlioCarProject.Tests
                 (cache, encoder) => Task.FromResult(content.Object));
 
             // Act
-            helper.Process(ctx, output);
+            helper.ProcessAsync(ctx, output);
 
             // Assert
             Assert.Equal(@"<a href=""Test/Page1"">1</a>"
