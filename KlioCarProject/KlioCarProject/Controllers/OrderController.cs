@@ -18,10 +18,10 @@ namespace KlioCarProject.Controllers
             repository = repoService;
             cart = cartService;
         }
-        [Authorize]
+        [Authorize(Roles = "Admins")]
         public ViewResult List() => View(repository.Orders.Where(o => !o.Shipped));
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles ="Admins")]
         public IActionResult MarkShipped(int orderID)
         {
             Order order = repository.Orders.FirstOrDefault(o => o.OrderID == orderID);

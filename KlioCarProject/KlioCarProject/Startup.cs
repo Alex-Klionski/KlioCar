@@ -42,6 +42,10 @@ namespace KlioCarProject
 
             services.AddDbContext<AppIdentityDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
+            
+            services.AddDbContext<ImageDbContext>(options =>
+               options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
+           
 
             services.ConfigureApplicationCookie(opts => opts.LoginPath = "/Users/Login");
 
@@ -57,7 +61,8 @@ namespace KlioCarProject
                 .AddDefaultTokenProviders();
 
             services.AddMvc(option => option.EnableEndpointRouting = false);
-
+             
+            services.AddControllersWithViews();
 
         }
 
@@ -110,7 +115,7 @@ namespace KlioCarProject
 
             
             SeedData.EnsurePopulated(app);
-
+            //ImageDbContext.EnsurePopulated(app);
             AppIdentityDbContext.CreateAdminAccount(app.ApplicationServices, Configuration).Wait();
             //IdentitySeedData.EnsurePopulated(app);
         }

@@ -16,8 +16,7 @@ namespace KlioCarProject.Controllers
         private UserManager<AppUser> userManager;
         private SignInManager<AppUser> signInManager;
 
-        public AccountController(UserManager<AppUser> userMgr,
-                SignInManager<AppUser> signInMgr)
+        public AccountController(UserManager<AppUser> userMgr, SignInManager<AppUser> signInMgr)
         {
             userManager = userMgr;
             signInManager = signInMgr;

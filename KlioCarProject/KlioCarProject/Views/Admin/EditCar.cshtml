@@ -34,9 +34,26 @@
             <button class="btn btn-primary" type="submit">Save</button>
             <a asp-action="Index" class="btn btn-secondary">Cancel</a>
         </div>
-
-
-
-
+    </form>
+    <form method="post" asp-controller="CarController" asp-action="ImageUpload" enctype="multipart/form-data">
+        <div class="form-group">
+            <label>Picture:</label>
+            <div class="custom-file">
+                <input class="form-control custom-file-input" type="file" name="file"/>
+                <label class="custom-file-label">Browse...</label>
+            </div>
+        </div>
+        <div class="text-center">
+            <button class="btn btn-primary" type="submit">Upload</button>
+        </div>
+        <img src=""width="600" height="400" />
     </form>
 
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".custom-file-input").on("change", function () {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).next(".custom-file-label").html(fileName);
+        })
+    });
+</script>

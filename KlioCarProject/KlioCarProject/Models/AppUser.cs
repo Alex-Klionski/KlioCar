@@ -11,5 +11,6 @@ namespace KlioCarProject.Models
         public AppUser(string userName) : base(userName)
         {
         }
+
     }
 }
