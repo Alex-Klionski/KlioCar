@@ -1,13 +1,24 @@
 ﻿@model CarsListViewModel
+
+@{
+    Layout = "_LayoutCar";
+}
+
 @foreach (var p in Model.Cars)
 {
     @Html.Partial("CarSummary", p);
 }
-
-<div page-model="@Model.PagingInfo" page-action="List" page-classes-enabled="true"
-     page-class="btn" page-class-normal="btn-secondary"
-     page-class-selected="btn-primary" page-url-category="@Model.CurrentCategory"
-     class="btn-group pull-right m-1">
+<div class="container">
+    <div class="row">
+        <div class="text-center col-md-12">
+            <div page-model="@Model.PagingInfo" page-action="List" page-classes-enabled="true"
+                 page-class="btn" page-class-normal="btn-secondary"
+                 page-class-selected="btn-primary" page-url-category="@Model.CurrentCategory"
+                 class="btn-group m-1">
+            </div>
+        </div>
+    </div>
 </div>
+
 
 

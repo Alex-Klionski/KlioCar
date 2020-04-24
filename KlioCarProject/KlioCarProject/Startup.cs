@@ -43,9 +43,10 @@ namespace KlioCarProject
             services.AddDbContext<AppIdentityDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
             
+            /*
             services.AddDbContext<ImageDbContext>(options =>
                options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
-           
+           */
 
             services.ConfigureApplicationCookie(opts => opts.LoginPath = "/Users/Login");
 

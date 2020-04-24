@@ -1,9 +1,10 @@
 ﻿@model Car
+
 @{
     ViewBag.Title = "Edit Car";
     Layout = "_AdminLayout";
 }
-    <form asp-action="EditCar" method="post">
+    <form method="post" asp-controller="Admin" asp-action="EditCar" enctype="multipart/form-data">
         <input type="hidden" asp-for="CarID" />
         <div class="form-group">
             <label asp-for="Model"></label>
@@ -29,24 +30,18 @@
             <label asp-for="Engine"></label>
             <div><span asp-validation-for="Engine" class="text-danger"></span></div>
             <input asp-for="Engine" class="form-control" />
-        </div>        
-        <div class="text-center">
-            <button class="btn btn-primary" type="submit">Save</button>
-            <a asp-action="Index" class="btn btn-secondary">Cancel</a>
         </div>
-    </form>
-    <form method="post" asp-controller="CarController" asp-action="ImageUpload" enctype="multipart/form-data">
         <div class="form-group">
             <label>Picture:</label>
             <div class="custom-file">
-                <input class="form-control custom-file-input" type="file" name="file"/>
+                <input class="form-control custom-file-input" type="file" name="ImageFile" />
                 <label class="custom-file-label">Browse...</label>
             </div>
         </div>
         <div class="text-center">
-            <button class="btn btn-primary" type="submit">Upload</button>
+            <button class="btn btn-primary" type="submit">Save</button>
+            <a asp-action="Index" class="btn btn-secondary">Cancel</a>
         </div>
-        <img src=""width="600" height="400" />
     </form>
 
 <script type="text/javascript">

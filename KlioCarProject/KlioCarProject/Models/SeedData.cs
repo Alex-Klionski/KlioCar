@@ -19,8 +19,8 @@ namespace KlioCarProject.Models {
                         Price = 250,
                         Category = "AClass",
                         Type = "hatchback",
-                        Engine = "1.0"
-
+                        Engine = "1.0",
+                        ImageName = "citroen.jpg"                    
                     },
                     new Car
                     {
@@ -28,7 +28,8 @@ namespace KlioCarProject.Models {
                         Price = 290,
                         Category = "BClass",
                         Type = "hatchback",
-                        Engine = "2.2"
+                        Engine = "2.2",
+                        ImageName = "logan.jpg"
                     },
                     new Car
                     {
@@ -36,7 +37,9 @@ namespace KlioCarProject.Models {
                         Price = 330,
                         Category = "CClass",
                         Type = "sedan",
-                        Engine = "2.3"
+                        Engine = "2.3",
+                        ImageName = "octavia.jpg"
+
                     },
                     new Car
                     {
@@ -44,7 +47,9 @@ namespace KlioCarProject.Models {
                         Price = 330,
                         Category = "CClass",
                         Type = "sedan",
-                        Engine = "2.3"
+                        Engine = "2.3",
+                        ImageName = "octavia.jpg"
+
                     },
                     new Car
                     {
@@ -52,7 +57,8 @@ namespace KlioCarProject.Models {
                         Price = 514,
                         Category = "DClass",
                         Type = "sedan",
-                        Engine = "2.5"
+                        Engine = "2.5",
+                        ImageName = "a4.jpg"
                     },
                     new Car
                     {
@@ -60,7 +66,8 @@ namespace KlioCarProject.Models {
                         Price = 544,
                         Category = "EClass",
                         Type = "universal",
-                        Engine = "2.5"
+                        Engine = "2.5",
+                        ImageName = "legend.jpg"
                     },
                     new Car
                     {
@@ -68,7 +75,8 @@ namespace KlioCarProject.Models {
                         Price = 830,
                         Category = "FClass",
                         Type = "universal",
-                        Engine = "3.4"
+                        Engine = "3.4",
+                        ImageName = "royce.jpg"
                     },
                     new Car
                     {
@@ -76,7 +84,8 @@ namespace KlioCarProject.Models {
                         Price = 750,
                         Category = "JClass",
                         Type = "crossover",
-                        Engine = "5.0"
+                        Engine = "5.0",
+                        ImageName = "touareg.jpg"
                     }
                 ) ;
                 context.SaveChanges();

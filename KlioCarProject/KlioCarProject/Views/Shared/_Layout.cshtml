@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>KlioCAR</title>
+    <title>FastKlioCAR</title>
     <link rel="stylesheet" asp-href-include="~/lib/fontawesome/css/*.css" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="~/css/site.css" />
@@ -11,12 +11,10 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-       
-                @await Component.InvokeAsync("NavigationMenu")
-                <div class="text-right my-2 my-lg-0">
-                    @await Component.InvokeAsync("CartSummary")
-                </div>
-       
+            @await Component.InvokeAsync("NavigationMenu")
+            <div class="text-right my-2 my-lg-0">
+                @await Component.InvokeAsync("CartSummary")
+            </div>
         </nav>
     </header>
     <div class="container">

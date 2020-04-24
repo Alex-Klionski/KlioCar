@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -21,5 +24,12 @@ namespace KlioCarProject.Models
         [Required(ErrorMessage = "Please specify a category")]
         public string Category { get; set; }
 
+        [DisplayName("Upload File")]
+        [Column(TypeName = "nvarchar(100)")]
+        public string ImageName { get; set; }
+
+        [DisplayName("Upload File")]
+        [NotMapped]
+        public IFormFile ImageFile { get; set; }
     }
 }

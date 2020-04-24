@@ -7,6 +7,10 @@ using KlioCarProject.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using KlioCarProject.Models.ViewModels;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
+using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 
 namespace KlioCarProject.Controllers
 {
@@ -21,13 +25,19 @@ namespace KlioCarProject.Controllers
         private IPasswordHasher<AppUser> passwordHasher;
 
 
-        public AdminController(ICarRepository repo, UserManager<AppUser> usrMng, IPasswordValidator<AppUser> passValid, IPasswordHasher<AppUser> passHasher, IUserValidator<AppUser> userValid)
+        private readonly IWebHostEnvironment _hostEnvironment;
+        private readonly ApplicationDbContext context;
+
+        public AdminController(ICarRepository repo, UserManager<AppUser> usrMng, IPasswordValidator<AppUser> passValid, IPasswordHasher<AppUser> passHasher, IUserValidator<AppUser> userValid, IWebHostEnvironment hostEnvironment, ApplicationDbContext _context)
         {
             repository = repo; 
             userManager = usrMng;
             passwordValidator = passValid;
             userValidator = userValid;
             passwordHasher = passHasher;
+
+            this._hostEnvironment = hostEnvironment;
+            context = _context;
         }
         public ViewResult Users() => View(userManager.Users);
         public IActionResult Index()
@@ -133,13 +143,49 @@ namespace KlioCarProject.Controllers
             return View(user);
         }
         public ViewResult EditCar(int carId) => View(repository.Cars.FirstOrDefault(p => p.CarID == carId));
+
+
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult EditCar(Car car)
         {
             if(ModelState.IsValid)
             {
-                repository.SaveCar(car);
-                TempData["message"] = $"{car.Model} has been saved";
+
+                if (car.ImageFile != null && car.ImageFile.Length > 0)
+                {
+                    var imagePath = @"\Upload\Images\";
+                    var uploadPath = _hostEnvironment.WebRootPath + imagePath;
+
+                    //Create Directory
+                    if (!Directory.Exists(uploadPath))
+                    {
+                        Directory.CreateDirectory(uploadPath);
+                    }
+
+                    //Create Uniq file name
+                    var uniqFileName = Guid.NewGuid().ToString();
+                    var fileName = Path.GetFileName(uniqFileName + "." + car.ImageFile.FileName.Split(".")[1].ToLower());
+                    car.ImageName = fileName;
+                    string fullPath = uploadPath + fileName;
+                    imagePath = imagePath + @"\";
+                    var filePath = @".." + Path.Combine(imagePath, fileName);
+
+                    using (var fileStream = new FileStream(fullPath, FileMode.Create))
+                    {
+                        car.ImageFile.CopyTo(fileStream);
+                    }
+                    //Insert record
+                    //context.Images.Add(imageModel);
+                    //await context.SaveChangesAsync();
+
+                    repository.SaveCar(car);
+                    TempData["message"] = $"{car.Model} has been saved";
+
+                    return RedirectToAction(nameof(Index));
+                }
+
+
                 return RedirectToAction("Index");
             }
             else
@@ -166,5 +212,56 @@ namespace KlioCarProject.Controllers
                 ModelState.AddModelError("", error.Description);
         }
 
+
+
+
+        //IMAGES NORMAL
+        /*
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(ImageModel imageModel)
+          {
+            if (ModelState.IsValid)
+            {
+                if (imageModel.ImageFile != null && imageModel.ImageFile.Length > 0)
+                {
+                    var imagePath = @"\Upload\Images\";
+                    var uploadPath = _hostEnvironment.WebRootPath + imagePath;
+
+                    //Create Directory
+                    if (!Directory.Exists(uploadPath))
+                    {
+                        Directory.CreateDirectory(uploadPath);
+                    }
+
+                    //Create Uniq file name
+                    var uniqFileName = Guid.NewGuid().ToString();
+                    var fileName = Path.GetFileName(uniqFileName + "." + imageModel.ImageFile.FileName.Split(".")[1].ToLower());
+                    imageModel.ImageName = fileName;
+                    string fullPath = uploadPath + fileName;
+                    imagePath = imagePath + @"\";
+                    var filePath = @".." + Path.Combine(imagePath, fileName);
+
+                    using (var fileStream = new FileStream(fullPath, FileMode.Create))
+                    {
+                        await imageModel.ImageFile.CopyToAsync(fileStream);
+                    }
+                    //Insert record
+                    //context.Images.Add(imageModel);
+                    //await context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+
+            }
+
+            return View(imageModel);
+        }
+
+           */
     }
 }

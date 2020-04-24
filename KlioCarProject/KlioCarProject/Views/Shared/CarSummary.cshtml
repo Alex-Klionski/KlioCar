@@ -1,5 +1,5 @@
 ﻿@model Car
-
+<!--
 <div class="card card-outline-primary m-1 p-1">
     <div class="bg-faded p-1">
         <h4>
@@ -9,11 +9,13 @@
             </span>
         </h4>
     </div>
-    <form id="@Model.CarID" asp-action="AddToCart"
+    <form id="@Model.
+    " asp-action="AddToCart"
           asp-controller="Cart" method="post">
         <input type="hidden" asp-for="CarID" />
         <input type="hidden" name="returnUrl"
                value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+        <img src="@("~/Upload/Images/" + Model.ImageName)" asp-append-version="true" width="500px" height="300px" />
         <span class="card-text p-1">
             @Model.Engine
             <button type="submit"
@@ -23,3 +25,51 @@
         </span>
     </form>
 </div>
+ -->
+
+<section class="layout__region layout-builder--layout__region showcase-screen feature" id="showcase--oMA-XozZc-k" data-gtm-event="element-scroll" data-gtm-drawer="showcase--oMA-XozZc-k" data-color-theme="dark" data-static-nav-color="invert" data-drawer-static-nav-color="default" data-title="@Model.Model">
+    <div data-layout-content-preview-placeholder-label="&quot;Hero (showcase)&quot; block" class="block block-layout-builder block-inline-blockhero-showcase">
+        <section data-gtm-key="tesla-hero-showcase-storage" class="hero hero--default hero--with-disclaimer" id="tesla-hero-showcase-storage" style="--media-height: 100vh;">
+            <picture class="hero-image">
+                <img src="@("~/Upload/Images/" + Model.ImageName)" asp-append-version="true" />
+            </picture>
+            <div class="hero-regions--wrapper">
+                <div class="hero-regions">
+                    <div class="hero-region--center hero-region--with-callouts">
+                        <div class="hero-region--center-top my-auto">
+                            <header>
+                                <h1 class=" header--white" style="opacity: 0.5; background: #000; padding: 5px;">
+                                    <span class="header-lower ">@Model.Model</span>
+                                </h1>
+                            </header>
+                            <section class="cmp-button-group">
+                                <div class="button-group cmp-btn_group--center">
+                                    <form id="@Model.CarID" asp-action="AddToCart" asp-controller="Cart" method="post">
+                                        <div class="tds-o-btn_group--item">
+                                            <input type="hidden" asp-for="CarID" />
+                                            <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+                                            <button type="submit" class="tds-btn tds-o-btn tds-btn--black" data-button-text-desktop="Add to Cart" data-button-text-mobile="Add to Cart">
+                                                Add To Cart
+                                            </button>
+                                        </div>
+                                    </form>
+                                    <form asp-action="Details" asp-controller="Car" method="post">
+                                        <div class="header-button tds-o-btn_group--item tds-btn_group--item">
+                                            <input type="hidden" asp-for="CarID" />
+                                            <button type="submit" class="tds-btn tds-o-btn tds-btn--black button--desktop-only" title="Details" data-button-text-desktop="Details" data-button-text-mobile="Details">Details</button>
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </section>
+                        </div>
+                        <button data-gtm-event="drawer-interaction" data-gtm-drawer=""
+                                data-gtm-interaction="close"
+                                aria-label="Move down / next"
+                                class="tds-icon--bounce tds-icon tds-icon-arrow-down hero-arrow_down hero-arrow_down--black tds--hide_on_mobile"></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</section>

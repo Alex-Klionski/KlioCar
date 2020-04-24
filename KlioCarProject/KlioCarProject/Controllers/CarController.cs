@@ -5,14 +5,20 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using KlioCarProject.Models;
 using KlioCarProject.Models.ViewModels;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
 namespace KlioCarProject.Controlles
 {
     public class CarController : Controller
     {
-        private ICarRepository repository;
         public int PageSize = 4;
-        public CarController(ICarRepository repository) { this.repository = repository; }
+        private ICarRepository repository;
+        public CarController(ICarRepository repository) 
+        { 
+            this.repository = repository;
+        }
         public ViewResult List(string category, int productPage = 1)
             =>View(new CarsListViewModel
             {
@@ -29,11 +35,11 @@ namespace KlioCarProject.Controlles
                 },
                 CurrentCategory = category
             });
-
-      /*  public ViewResult List(int productPage = 1) 
-            => View(repository.Cars
-            .OrderBy(p => p.CarID)
-            .Skip((productPage - 1) * PageSize)
-            .Take(PageSize));*/
+        public ViewResult Details(int carID) => View(repository.Cars.FirstOrDefault(p => p.CarID == carID));
+        /*  public ViewResult List(int productPage = 1) 
+              => View(repository.Cars
+              .OrderBy(p => p.CarID)
+              .Skip((productPage - 1) * PageSize)
+              .Take(PageSize));*/
     }
 }
