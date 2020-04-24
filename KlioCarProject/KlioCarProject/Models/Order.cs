@@ -15,17 +15,17 @@ namespace KlioCarProject.Models
         public ICollection<CartLine> Lines { get; set; }
         [BindNever]
         public bool Shipped { get; set; }
-
-        [Required(ErrorMessage = "Please enter a name")]
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Please enter the first adress line")]
         public string Line { get; set; }
 
-
         [Required(ErrorMessage = "Please, enter a city name")]
         public string City { get; set; }
         public string Zip { get; set; }
         public bool GiftWrap { get; set; }
+
+        //
+        public decimal Total { get; set; }
     }
 }

@@ -9,5 +9,6 @@ namespace KlioCarProject.Models.ViewModels
     {
         public Cart Cart { get; set; }
         public string ReturnUrl { get; set; }
+
     }
 }

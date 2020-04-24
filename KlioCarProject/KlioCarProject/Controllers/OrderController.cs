@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace KlioCarProject.Controllers
 {
+    [Authorize]
     public class OrderController : Controller
     {
         private IOrderRepository repository;
@@ -33,6 +34,7 @@ namespace KlioCarProject.Controllers
             return RedirectToAction(nameof(List));
         }
         public ViewResult Checkout() => View(new Order());
+
         [HttpPost]
         public IActionResult Checkout(Order order)
         {
@@ -42,6 +44,7 @@ namespace KlioCarProject.Controllers
             }
             if (ModelState.IsValid)
             {
+                order.Total = cart.ComputeTotalValue(); // total
                 order.Lines = cart.Lines.ToArray();
                 repository.SaveOrder(order);
                 return RedirectToAction(nameof(Completed));

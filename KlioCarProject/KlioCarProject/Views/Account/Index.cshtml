@@ -1,13 +1,44 @@
-﻿@model Dictionary<string, object>
-@{
-    ViewData["Title"] = "Account";
+﻿
+@model IEnumerable<Order>
+
+<h1>Account @User.Identity.Name</h1>
+<br />
+<h3>Orders:</h3>
+@if (Model.Count() > 0)
+{
+    <table class="table table-bordered table-striped">
+        <tr><th>City</th><th>Zip</th><th colspan="2">Cars</th><th></th></tr>
+        @foreach (Order o in Model)
+        {
+            <tr>
+                <td> @o.City</td>
+                <td>@o.Zip</td>
+                <th>Car</th>
+                <th>Quantity</th>
+                <th></th>
+            </tr>
+            @foreach (CartLine line in o.Lines)
+            {
+                <tr>
+                    <td colspan="2"></td>
+                    <td>@line.Car.Model</td>
+                    <td>@line.Quantity</td>
+                    <td></td>
+                </tr>
+            }
+            <tfoot>
+                <tr>
+                    <td colspan="3" class="text-right">Total:</td>
+                    <td class="text-right">
+                        @o.Total
+                    </td>
+                </tr>
+            </tfoot>
+        }
+    </table>
 }
-<div class="m-1 p-1">
-    <h1>Account</h1>    
-</div>
-<table class="table table-sm table-bordered m-1 p-1">
-    @foreach(var kvp in Model)
-    {
-        <tr><th>@kvp.Key</th><td>@kvp.Value</td></tr>
-    }
-</table>
+else
+{
+    <div class="text-center">No Orders</div>
+}
+

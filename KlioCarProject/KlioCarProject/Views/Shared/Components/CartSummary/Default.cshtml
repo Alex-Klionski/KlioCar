@@ -1,20 +1,28 @@
 ﻿@model Cart
-<div class="">
-    @if (User?.Identity?.IsAuthenticated != false)
-    {
-        <a asp-controller="Account" asp-action="Logout" class="btn btn-outline-danger btn-sm">Logout</a>
-    }
-    @if (Model.Lines.Count() > 0)
-    {
-        <small class="navbar-text">
-            <b>Your cart:</b>
-            @Model.Lines.Sum(x => x.Quantity) item(s)
-            @Model.ComputeTotalValue().ToString("c")
-        </small>
-    }
-    <a class="btn btn-sm btn-secondary navbar-btn"
-       asp-controller="Cart" asp-action="Index"
-       asp-route-returnurl="@ViewContext.HttpContext.Request.PathAndQuery()">
-        <i class="fa fa-shopping-cart"></i>
-    </a>
-</div>
+    <div class="">
+        @if (User?.Identity?.IsAuthenticated != false)
+        {
+            <a asp-controller="Account" asp-action="Logout" class="btn btn-outline-danger btn-sm">Logout</a>
+            <a asp-controller="Account" asp-action="Index" class="btn btn-outline-success btn-sm">Account</a>
+        }
+        @if (Model.Lines.Count() > 0)
+        {
+            <small class="navbar-text">
+                <b>Your cart:</b>
+                @Model.Lines.Sum(x => x.Quantity) item(s)
+                @Model.ComputeTotalValue().ToString("c")
+            </small>
+        }
+        <a class="btn btn-sm btn-secondary navbar-btn"
+           asp-controller="Cart" asp-action="Index"
+           asp-route-returnurl="@ViewContext.HttpContext.Request.PathAndQuery()">
+            <i class="fa fa-shopping-cart"></i>
+        </a>
+        @if (!User.Identity.IsAuthenticated)
+        {
+            <a class="btn btn-sm btn-secondary navbar-btn" asp-controller="Account" asp-action="Login">
+                <i class="fa fa-home fa-fw"></i>
+            </a>
+        }
+
+    </div>
