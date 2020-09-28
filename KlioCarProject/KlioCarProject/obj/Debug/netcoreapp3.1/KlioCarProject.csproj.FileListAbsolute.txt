@@ -285,7 +285,6 @@ E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\bin\Debug\netcoreapp3.1
 E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\staticwebassets\KlioCarProject.StaticWebAssets.Manifest.cache
 E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\staticwebassets\KlioCarProject.StaticWebAssets.xml
-E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\KlioCarProject.MvcApplicationPartsAssemblyInfo.cache
 E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\KlioCarProject.RazorAssemblyInfo.cache
 E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\KlioCarProject.RazorAssemblyInfo.cs
 E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\KlioCarProject.AssemblyInfoInputs.cache
@@ -323,6 +322,8 @@ E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1
 E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\KlioCarProject.dll
 E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\KlioCarProject.pdb
 E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\KlioCarProject.csprojAssemblyReference.cache
-E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Create.cshtml.g.cs
 E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutCar.cshtml.g.cs
 E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\Razor\Views\Car\Details.cshtml.g.cs
+E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\bin\Debug\netcoreapp3.1\libman.json
+E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\KlioCarProject.MvcApplicationPartsAssemblyInfo.cache
+E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\Razor\Views\Car\ChatList.cshtml.g.cs

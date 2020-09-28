@@ -44,8 +44,10 @@ namespace KlioCarProject.Controllers
         {
             return View(repository.Cars);
         }
+        [AllowAnonymous]
         public ViewResult CreateUser() => View();
 
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> CreateUser(CreateModel model)
         {

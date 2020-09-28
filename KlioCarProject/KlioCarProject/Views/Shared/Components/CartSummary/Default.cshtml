@@ -4,6 +4,10 @@
         {
             <a asp-controller="Account" asp-action="Logout" class="btn btn-outline-danger btn-sm">Logout</a>
             <a asp-controller="Account" asp-action="Index" class="btn btn-outline-success btn-sm">Account</a>
+            @if (User.IsInRole("Admins"))
+            {
+                <a asp-controller="Admin" asp-action="Index" class="btn btn-outline-success btn-sm">Admin-panel</a>
+            }
         }
         @if (Model.Lines.Count() > 0)
         {
@@ -24,5 +28,6 @@
                 <i class="fa fa-home fa-fw"></i>
             </a>
         }
+
 
     </div>

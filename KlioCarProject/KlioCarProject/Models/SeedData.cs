@@ -20,7 +20,7 @@ namespace KlioCarProject.Models {
                         Category = "AClass",
                         Type = "hatchback",
                         Engine = "1.0",
-                        ImageName = "citroen.jpg"                    
+                        ImageName = "citroen.jpg",
                     },
                     new Car
                     {

@@ -8,6 +8,8 @@ using KlioCarProject.Models.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace KlioCarProject.Controlles
 {
@@ -15,9 +17,13 @@ namespace KlioCarProject.Controlles
     {
         public int PageSize = 4;
         private ICarRepository repository;
-        public CarController(ICarRepository repository) 
+        public readonly UserManager<AppUser> _userManager;
+        public readonly AppIdentityDbContext _context;
+        public CarController(ICarRepository repository, UserManager<AppUser> userManager, AppIdentityDbContext context) 
         { 
             this.repository = repository;
+            _userManager = userManager;
+            _context = context;
         }
         public ViewResult List(string category, int productPage = 1)
             =>View(new CarsListViewModel
@@ -35,11 +41,14 @@ namespace KlioCarProject.Controlles
                 },
                 CurrentCategory = category
             });
+        public ViewResult ChatList(int carID) => View(repository.Cars.FirstOrDefault(p => p.CarID == carID));
+
         public ViewResult Details(int carID) => View(repository.Cars.FirstOrDefault(p => p.CarID == carID));
         /*  public ViewResult List(int productPage = 1) 
               => View(repository.Cars
               .OrderBy(p => p.CarID)
               .Skip((productPage - 1) * PageSize)
               .Take(PageSize));*/
+
     }
 }

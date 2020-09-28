@@ -14,9 +14,17 @@ namespace KlioCarProject.Models
     {
         public AppIdentityDbContext(DbContextOptions<AppIdentityDbContext> options):base(options)
         {
-            //Database.EnsureCreated();
+            Database.EnsureCreated();
         }
-       
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            builder.Entity<Message>()
+                .HasOne<AppUser>(a => a.Sender)
+                .WithMany(d => d.Messages)
+                .HasForeignKey(d => d.UserID);
+        }
+        public DbSet<Message> Messages { get; set; }
         //SeedData
         public static async Task CreateAdminAccount(IServiceProvider serviceProvider, IConfiguration configuration)
         {

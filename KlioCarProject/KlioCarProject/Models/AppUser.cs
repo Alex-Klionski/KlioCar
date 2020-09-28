@@ -10,7 +10,8 @@ namespace KlioCarProject.Models
     {
         public AppUser(string userName) : base(userName)
         {
+            Messages = new HashSet<Message>();
         }
-
+        public virtual ICollection<Message> Messages { get; set; }
     }
 }

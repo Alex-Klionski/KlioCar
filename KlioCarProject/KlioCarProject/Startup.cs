@@ -42,6 +42,8 @@ namespace KlioCarProject
 
             services.AddDbContext<AppIdentityDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
+
+            services.AddSignalR();
             
             /*
             services.AddDbContext<ImageDbContext>(options =>
@@ -81,6 +83,12 @@ namespace KlioCarProject
             app.UseStaticFiles();
             app.UseStatusCodePages();
             app.UseSession();
+
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapHub<ChatHub>("/chat");
+            });
 
             //Navigation
 

@@ -31,7 +31,12 @@ a {
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
-
+/* Login */
+.login {
+    background: radial-gradient(transparent, hsl(0, 0%, 2%)), #333 url(/Upload/Images/bg.jpg) no-repeat center center fixed;
+    background-size: cover;
+}
+}
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
