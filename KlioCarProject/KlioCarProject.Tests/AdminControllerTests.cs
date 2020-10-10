@@ -13,6 +13,7 @@ namespace KlioCarProject.Tests
 {
     public class AdminControllerTests
     {
+        /*
         [Fact]
         public void Index_Contains_All_Cars()
         {
@@ -85,6 +86,6 @@ namespace KlioCarProject.Tests
             //Assertion
             mock.Verify(m => m.DeleteCar(car2.CarID));
         }
- 
+ */
     }
 }
