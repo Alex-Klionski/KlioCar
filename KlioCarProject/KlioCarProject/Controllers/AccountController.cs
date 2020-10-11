@@ -28,7 +28,7 @@ namespace KlioCarProject.Controllers
         public IActionResult Login(string returnUrl)
         {
             // I added this if
-
+         
             if (User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Index");

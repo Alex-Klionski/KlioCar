@@ -325,7 +325,13 @@ E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1
 E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutCar.cshtml.g.cs
 E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\Razor\Views\Car\Details.cshtml.g.cs
 E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\bin\Debug\netcoreapp3.1\libman.json
-E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\KlioCarProject.MvcApplicationPartsAssemblyInfo.cache
 E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\Razor\Views\Car\ChatList.cshtml.g.cs
 E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
 E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
+E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\Razor\Views\Email\EmailRequest.cshtml.g.cs
+E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\bin\Debug\netcoreapp3.1\MailKit.dll
+E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\bin\Debug\netcoreapp3.1\MimeKit.dll
+E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
+E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\bin\Debug\netcoreapp3.1\System.Security.Cryptography.Pkcs.dll
+E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Security.Cryptography.Pkcs.dll
+E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\KlioCarProject.MvcApplicationPartsAssemblyInfo.cache

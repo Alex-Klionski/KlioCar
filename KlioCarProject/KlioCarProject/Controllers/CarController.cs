@@ -10,6 +10,8 @@ using Microsoft.AspNetCore.Hosting;
 using System.IO;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using KlioCarProject.Infrastructure;
 
 namespace KlioCarProject.Controlles
 {
@@ -19,6 +21,7 @@ namespace KlioCarProject.Controlles
         private ICarRepository repository;
         public readonly UserManager<AppUser> _userManager;
         public readonly AppIdentityDbContext _context;
+
         public CarController(ICarRepository repository, UserManager<AppUser> userManager, AppIdentityDbContext context) 
         { 
             this.repository = repository;

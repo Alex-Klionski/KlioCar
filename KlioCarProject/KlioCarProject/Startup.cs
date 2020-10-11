@@ -12,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using KlioCarProject.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using KlioCarProject.Infrastructure;
 
 namespace KlioCarProject
 {
@@ -34,6 +35,7 @@ namespace KlioCarProject
 
             services.AddTransient<ICarRepository, EFCarRepository>();
             services.AddTransient<IOrderRepository, EFOrderRepository>();
+
 
             //Add databases
             services.AddDbContext<ApplicationDbContext>(options =>
