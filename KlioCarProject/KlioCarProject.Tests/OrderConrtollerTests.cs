@@ -11,6 +11,7 @@ namespace KlioCarProject.Tests
 {
     public class OrderConrtollerTests
     {
+        /*
         [Fact]
         public void Cannot_Checkout_Empty_Cart()
         {
@@ -47,6 +48,6 @@ namespace KlioCarProject.Tests
             mock.Verify(m => m.SaveOrder(It.IsAny<Order>()), Times.Once);
             Assert.Equal("Completed", result.ActionName);
         }
-
+        */
     }
 }

@@ -334,4 +334,10 @@ E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\bin\Debug\netcoreapp3.1
 E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
 E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\bin\Debug\netcoreapp3.1\System.Security.Cryptography.Pkcs.dll
 E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Security.Cryptography.Pkcs.dll
+E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.Google.dll
+E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\bin\Debug\netcoreapp3.1\NLog.dll
+E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\bin\Debug\netcoreapp3.1\NLog.Extensions.Logging.dll
+E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\bin\Debug\netcoreapp3.1\NLog.Web.AspNetCore.dll
+E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\bin\Debug\netcoreapp3.1\nlog.config
 E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\KlioCarProject.MvcApplicationPartsAssemblyInfo.cache
+E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\bin\Debug\netcoreapp3.1\web.config

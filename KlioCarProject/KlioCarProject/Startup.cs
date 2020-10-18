@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,6 +13,7 @@ using KlioCarProject.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using KlioCarProject.Infrastructure;
+using Microsoft.Extensions.Logging;
 
 namespace KlioCarProject
 {
@@ -69,6 +70,23 @@ namespace KlioCarProject
              
             services.AddControllersWithViews();
 
+            //OAuth
+            services.ConfigureExternalProviders(Configuration);
+
+            /*
+            services.AddAuthentication()
+               .AddGoogle(options =>
+               {
+                   IConfigurationSection googleAuthNSection =
+                       Configuration.GetSection("Authentication:Google");
+
+                   options.ClientId = googleAuthNSection["ClientId"];
+                   options.ClientSecret = googleAuthNSection["ClientSecret"];
+
+                   options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+
+               });
+            */
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -85,11 +103,12 @@ namespace KlioCarProject
             app.UseStaticFiles();
             app.UseStatusCodePages();
             app.UseSession();
-
+    
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapHub<ChatHub>("/chat");
+                endpoints.MapControllers();
             });
 
             //Navigation

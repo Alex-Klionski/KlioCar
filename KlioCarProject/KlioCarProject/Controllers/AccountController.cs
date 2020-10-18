@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using KlioCarProject.Models;
 using KlioCarProject.Models.ViewModels;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -89,5 +90,8 @@ namespace KlioCarProject.Controllers
             await signInManager.SignOutAsync();
             return Redirect(returnUrl);
         }
+
+        // OAuth
+
     }
 }
