@@ -22,12 +22,12 @@ namespace KlioCarProject.Controlles
         public readonly UserManager<AppUser> _userManager;
         public readonly AppIdentityDbContext _context;
 
-        public CarController(ICarRepository repository, UserManager<AppUser> userManager, AppIdentityDbContext context) 
+        public CarController(ICarRepository repository) 
         { 
             this.repository = repository;
-            _userManager = userManager;
-            _context = context;
         }
+
+
         public ViewResult List(string category, int productPage = 1)
             =>View(new CarsListViewModel
             {

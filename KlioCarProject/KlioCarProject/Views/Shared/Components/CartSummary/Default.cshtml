@@ -4,7 +4,7 @@
         {
             <a asp-controller="Account" asp-action="Logout" class="btn btn-outline-danger btn-sm">Logout</a>
             <a asp-controller="Account" asp-action="Index" class="btn btn-outline-success btn-sm">Account</a>
-            @if (User.IsInRole("Admins"))
+            @if (User.IsInRole("Admins")|| User.IsInRole("Managers"))
             {
                 <a asp-controller="Admin" asp-action="Index" class="btn btn-outline-success btn-sm">Admin-panel</a>
             }

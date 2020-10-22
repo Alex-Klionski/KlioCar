@@ -11,10 +11,11 @@ using Microsoft.AspNetCore.Hosting;
 using System.IO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace KlioCarProject.Controllers
 {
-    [Authorize(Roles ="Admins")]
+    [Authorize(Roles ="Admins, Managers")]
     public class AdminController : Controller
     {
         private ICarRepository repository;
@@ -28,6 +29,7 @@ namespace KlioCarProject.Controllers
         private readonly IWebHostEnvironment _hostEnvironment;
         private readonly ApplicationDbContext context;
 
+        [ActivatorUtilitiesConstructor]
         public AdminController(ICarRepository repo, UserManager<AppUser> usrMng, IPasswordValidator<AppUser> passValid, IPasswordHasher<AppUser> passHasher, IUserValidator<AppUser> userValid, IWebHostEnvironment hostEnvironment, ApplicationDbContext _context)
         {
             repository = repo; 
@@ -39,7 +41,13 @@ namespace KlioCarProject.Controllers
             this._hostEnvironment = hostEnvironment;
             context = _context;
         }
+        public AdminController(ICarRepository repo)
+        {
+            repository = repo;
+        }
+
         public ViewResult Users() => View(userManager.Users);
+
         public IActionResult Index()
         {
             return View(repository.Cars);
@@ -74,6 +82,7 @@ namespace KlioCarProject.Controllers
             }
             return View(model);
         }
+        [Authorize(Roles = "Admins")]
         [HttpPost]
         public async Task<IActionResult>DeleteUser(string id)
         {
@@ -96,6 +105,8 @@ namespace KlioCarProject.Controllers
             }
             return View("Index", userManager.Users);
         }
+
+        [Authorize(Roles = "Admins")]
         public async Task<IActionResult>EditUser(string id)
         {
             AppUser user = await userManager.FindByIdAsync(id);
@@ -108,6 +119,8 @@ namespace KlioCarProject.Controllers
                 return RedirectToAction("Index");
             }
         }
+
+        [Authorize(Roles = "Admins")]
         [HttpPost]                     
         public async Task<IActionResult>EditUser(string id, string email, string password)
         {
@@ -144,9 +157,12 @@ namespace KlioCarProject.Controllers
             }
             return View(user);
         }
+
+        [Authorize(Roles = "Admins")]
         public ViewResult EditCar(int carId) => View(repository.Cars.FirstOrDefault(p => p.CarID == carId));
 
 
+        [Authorize(Roles = "Admins")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult EditCar(Car car)
@@ -195,7 +211,11 @@ namespace KlioCarProject.Controllers
                 return View(car);
             }
         }
+
+        [Authorize(Roles = "Admins")]
         public ViewResult CreateCar() => View("EditCar", new Car());
+
+        [Authorize(Roles = "Admins")]
         [HttpPost]
         public IActionResult DeleteCar(int carId)
         {

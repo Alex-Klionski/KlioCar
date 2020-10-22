@@ -11,9 +11,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace KlioCarProject.Tests
 {
-    public class UnitTest1
+    public class CarControllerTests
     {
-        /*
         [Fact]
         public void Can_Paginate()
         {
@@ -103,8 +102,6 @@ namespace KlioCarProject.Tests
             Assert.Equal(3, res3);
             //Assert.Equal(5, resAll);
 
-
         }
-    */
     }
 }

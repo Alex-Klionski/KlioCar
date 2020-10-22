@@ -341,3 +341,9 @@ E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\bin\Debug\netcoreapp3.1
 E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\bin\Debug\netcoreapp3.1\nlog.config
 E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\KlioCarProject.MvcApplicationPartsAssemblyInfo.cache
 E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\bin\Debug\netcoreapp3.1\web.config
+E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll

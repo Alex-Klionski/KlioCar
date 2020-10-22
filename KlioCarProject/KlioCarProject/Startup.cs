@@ -14,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using KlioCarProject.Infrastructure;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace KlioCarProject
 {
@@ -71,8 +72,21 @@ namespace KlioCarProject
             services.AddControllersWithViews();
 
             //OAuth
-            services.ConfigureExternalProviders(Configuration);
+            //services.ConfigureExternalProviders(Configuration);
 
+            services.AddAuthentication(options =>
+            {
+                options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            })
+                .AddCookie(options =>
+                {
+                    options.LoginPath = "/register/google-login";
+                })
+                .AddGoogle(options =>
+                {
+                    options.ClientId = "543062444631-vvs36s1dce29l1vct1mjdi2unl9pqvit.apps.googleusercontent.com";
+                    options.ClientSecret = "TCXuAn9IDdEig5MOiJj4CQBr";
+                });
             /*
             services.AddAuthentication()
                .AddGoogle(options =>
@@ -96,14 +110,19 @@ namespace KlioCarProject
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+                app.UseHsts();
+            }
             app.UseAuthentication();
-            app.UseAuthorization();
             app.UseRouting();
+            app.UseAuthorization();
             app.UseStaticFiles();
             app.UseStatusCodePages();
             app.UseSession();
-    
+
+
 
             app.UseEndpoints(endpoints =>
             {

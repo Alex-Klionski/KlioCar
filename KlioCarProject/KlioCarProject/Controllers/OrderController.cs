@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using MimeKit;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace KlioCarProject.Controllers
 {
@@ -16,16 +17,28 @@ namespace KlioCarProject.Controllers
         private IOrderRepository repository;
         private UserManager<AppUser> userManager;
         private Cart cart;
+
+        [ActivatorUtilitiesConstructor]
         public OrderController(IOrderRepository repoService, Cart cartService, UserManager<AppUser> usrMng)
         {
             repository = repoService;
             cart = cartService;
             userManager = usrMng;
         }
-        [Authorize(Roles = "Admins")]
-        public ViewResult List() => View(repository.Orders.Where(o => !o.Shipped));
+        public OrderController(IOrderRepository repoService, Cart cartService)
+        {
+            repository = repoService;
+            cart = cartService;
+        }
+        [Authorize(Roles = "Admins, Managers")]
+        public ViewResult List()
+        {
+            return View(repository.Orders.Where(o => !o.Shipped));
+        }
+
         [HttpPost]
-        [Authorize(Roles ="Admins")]
+        [Authorize(Roles ="Admins, Managers")]
+
         public async Task<IActionResult> MarkShipped(int orderID)
         {
             Order order = repository.Orders.FirstOrDefault(o => o.OrderID == orderID);

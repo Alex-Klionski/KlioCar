@@ -13,7 +13,6 @@ namespace KlioCarProject.Tests
 {
     public class AdminControllerTests
     {
-        /*
         [Fact]
         public void Index_Contains_All_Cars()
         {
@@ -55,9 +54,9 @@ namespace KlioCarProject.Tests
 
             //Action
 
-            Car p1 = GetViewModel<Car>(targer.Edit(1));
-            Car p2 = GetViewModel<Car>(targer.Edit(2));
-            Car p3 = GetViewModel<Car>(targer.Edit(3));
+            Car p1 = GetViewModel<Car>(targer.EditCar(1));
+            Car p2 = GetViewModel<Car>(targer.EditCar(2));
+            Car p3 = GetViewModel<Car>(targer.EditCar(3));
 
             //Assertion
 
@@ -81,11 +80,10 @@ namespace KlioCarProject.Tests
 
             //Action 
 
-            target.Delete(car2.CarID);
+            target.DeleteCar(car2.CarID);
 
             //Assertion
             mock.Verify(m => m.DeleteCar(car2.CarID));
         }
- */
     }
 }
