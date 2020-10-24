@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Authentication;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -14,5 +15,6 @@ namespace KlioCarProject.Models.ViewModels
         [UIHint("password")]
         public string Password { get; set; }
         public string ReturnUrl { get; set; } = "/";
+        public IList<AuthenticationScheme> ExternalLogins { get; set; }
     }
 }

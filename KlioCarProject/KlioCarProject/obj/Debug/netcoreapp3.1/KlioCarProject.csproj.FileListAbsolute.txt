@@ -347,3 +347,5 @@ E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\bin\Debug\netcoreapp3.1
 E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
 E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\Razor\Views\Error\Error.cshtml.g.cs
+E:\!Study\4sem\OOP\KlioCar\KlioCarProject\KlioCarProject\obj\Debug\netcoreapp3.1\Razor\Views\Error\Exception.cshtml.g.cs

@@ -70,37 +70,16 @@ namespace KlioCarProject
             services.AddMvc(option => option.EnableEndpointRouting = false);
              
             services.AddControllersWithViews();
+            services.AddRazorPages();
 
-            //OAuth
-            //services.ConfigureExternalProviders(Configuration);
-
-            services.AddAuthentication(options =>
-            {
-                options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-            })
-                .AddCookie(options =>
-                {
-                    options.LoginPath = "/register/google-login";
-                })
-                .AddGoogle(options =>
-                {
-                    options.ClientId = "543062444631-vvs36s1dce29l1vct1mjdi2unl9pqvit.apps.googleusercontent.com";
-                    options.ClientSecret = "TCXuAn9IDdEig5MOiJj4CQBr";
-                });
-            /*
+           
             services.AddAuthentication()
                .AddGoogle(options =>
                {
-                   IConfigurationSection googleAuthNSection =
-                       Configuration.GetSection("Authentication:Google");
-
-                   options.ClientId = googleAuthNSection["ClientId"];
-                   options.ClientSecret = googleAuthNSection["ClientSecret"];
-
-                   options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-
+                   options.ClientId = "543062444631-vvs36s1dce29l1vct1mjdi2unl9pqvit.apps.googleusercontent.com";
+                   options.ClientSecret = "TCXuAn9IDdEig5MOiJj4CQBr";
                });
-            */
+ 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -109,60 +88,70 @@ namespace KlioCarProject
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Exception");
                 app.UseHsts();
             }
+
+            app.UseStatusCodePagesWithReExecute("/Error/{0}");
+            app.UseHttpsRedirection();
+
             app.UseAuthentication();
             app.UseRouting();
             app.UseAuthorization();
             app.UseStaticFiles();
-            app.UseStatusCodePages();
+           // app.UseStatusCodePages();
             app.UseSession();
-
-
-
+           
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapRazorPages();
+                endpoints.MapHub<ChatHub>("/chat");
+            });
+            
+            /*
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapHub<ChatHub>("/chat");
                 endpoints.MapControllers();
             });
-
+            */
             //Navigation
 
             app.UseMvc(routes =>
-            {
+            {    
             routes.MapRoute(
                 name: null,
                 template: "{category}/Page{productPage:int}",
                 defaults: new { controller = "Car", action = "List" }
                 );
-
+                
             routes.MapRoute(
                  name: null,
                  template: "Page{productPage:int}",
                  defaults: new { controller = "Car", action = "List", productPage = 1 }
                  );
-
+            
             routes.MapRoute(
                 name: null,
                 template: "{category}",
                 defaults: new { controller = "Car", action = "List", productPage = 1 }
                 );
-
-            routes.MapRoute(
+               
+            routes.MapRoute(    
                  name: null,
                  template: "",
                  defaults: new { controller = "Car", action = "List", productPage = 1 }
                  );
-
-            routes.MapRoute(name: null, template: "{controller}/{action}/{id?}");
+                
+                routes.MapRoute(name: null, template: "{controller}/{action}/{id?}");
             });
-
-
             
+
+           
             SeedData.EnsurePopulated(app);
             //ImageDbContext.EnsurePopulated(app);
             AppIdentityDbContext.CreateAdminAccount(app.ApplicationServices, Configuration).Wait();
