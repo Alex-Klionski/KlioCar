@@ -25,13 +25,14 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.101
+    - name: Install dependencies
+      run: dotnet restore ${{ github.workspace }}/KlioCarProject/KlioCarProject/KlioCarProject.csproj
       
     - name: Build
-      run: dotnet build --configuration Release --no-restore
-      working-directory: ./KlioCarProject
+      run: dotnet build ${{ github.workspace }}/KlioCarProject/KlioCarProject/KlioCarProject.csproj --configuration Release --no-restore
 
     - name: Test
-      run: dotnet test --no-restore --verbosity normal
-      working-directory: ./KlioCarProject
+      run: dotnet test ${{ github.workspace }}/KlioCarProject/KlioCarProject/KlioCarProject.csproj --no-restore --verbosity normal
+      
       
     
