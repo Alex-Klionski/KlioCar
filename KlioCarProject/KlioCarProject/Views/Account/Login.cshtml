@@ -39,31 +39,18 @@
                                     <button class="btn btn-primary" type="submit">Login</button>
                                 </div>
                             </form>
-                            <div class="form-group">
-                                <h4>External login</h4>
-                                <hr />
-                                @{
-                                    if (Model.ExternalLogins.Count == 0)
-                                    {
-                                        <div>No external logins configured</div>
-                                    }
-                                    else
-                                    {
-                                        <form method="post" asp-action="ExternalLogin" asp-controller="Account">
-                                            <div>
-                                                @foreach (var provider in Model.ExternalLogins)
-                                                {
-                                                    <button type="submit" class="btn btn-primary"
-                                                            name="provider" value="@provider.Name"
-                                                            title="Login using your @provider.DisplayName">
-                                                        @provider.DisplayName
-                                                        </button>
-                                                    }
-                                            </div>
-                                        </form>
-                                    }
-                                }
-                            </div>
+
+                            <h4>External login</h4>
+                            <hr />
+                            <form method="post" asp-action="ExternalLogin" asp-controller="Account">
+                                <div>
+                                    <button type="submit" class="btn btn-primary"
+                                            name="provider" value="Google"
+                                            title="Login with Google">
+                                        Google
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                         <div class="card-footer">
                             <div class="d-flex justify-content-center links">

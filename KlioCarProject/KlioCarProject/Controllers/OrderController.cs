@@ -104,7 +104,7 @@ namespace KlioCarProject.Controllers
                     using (MailKit.Net.Smtp.SmtpClient client = new MailKit.Net.Smtp.SmtpClient())
                     {
                         client.Connect("smtp.gmail.com", 465, true);
-                        client.Authenticate("kliohelpforyou@gmail.com", "alex_1992");
+                        client.Authenticate("asp.email.kliocar@gmail.com", "nKfOm87123");
                         client.Send(message);
                         client.Disconnect(true);
                     }

@@ -46,7 +46,7 @@ namespace KlioCarProject
 
             services.AddDbContext<AppIdentityDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
-
+  
             services.AddSignalR();
             
             /*
@@ -155,7 +155,7 @@ namespace KlioCarProject
             SeedData.EnsurePopulated(app);
             //ImageDbContext.EnsurePopulated(app);
             AppIdentityDbContext.CreateAdminAccount(app.ApplicationServices, Configuration).Wait();
-            //IdentitySeedData.EnsurePopulated(app);
+            // IdentitySeedData.EnsurePopulated(app);
         }
     }
 }
