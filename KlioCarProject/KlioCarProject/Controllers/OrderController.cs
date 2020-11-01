@@ -58,11 +58,11 @@ namespace KlioCarProject.Controllers
                     }
                     message.Subject = "Your order is approved " +  order.Name + " # " + order.OrderID;
                     message.Body = new BodyBuilder() { HtmlBody = "Your order is approved " + order.Total + " " + model + "<div style=\"color:green;\">Message from Kliocar </div>" }.ToMessageBody();
-                  
+
                     using (MailKit.Net.Smtp.SmtpClient client = new MailKit.Net.Smtp.SmtpClient())
                     {
                         client.Connect("smtp.gmail.com", 465, true);
-                        client.Authenticate("kliohelpforyou@gmail.com", "alex_1992");
+                        client.Authenticate("asp.email.kliocar@gmail.com", "nKfOm87123");
                         client.Send(message);
                         client.Disconnect(true);
                     }

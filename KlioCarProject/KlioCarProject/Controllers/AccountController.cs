@@ -22,7 +22,6 @@ namespace KlioCarProject.Controllers
         {
             userManager = userMgr;
             signInManager = signInMgr;
-            IdentitySeedData.EnsurePopulated(userMgr).Wait();
             repository = repo;
         }
 
@@ -166,8 +165,6 @@ namespace KlioCarProject.Controllers
             await signInManager.SignOutAsync();
             return Redirect(returnUrl);
         }
-
-        // OAuth
 
     }
 }

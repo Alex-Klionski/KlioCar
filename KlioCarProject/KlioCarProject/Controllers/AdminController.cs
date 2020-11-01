@@ -234,56 +234,5 @@ namespace KlioCarProject.Controllers
                 ModelState.AddModelError("", error.Description);
         }
 
-
-
-
-        //IMAGES NORMAL
-        /*
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(ImageModel imageModel)
-          {
-            if (ModelState.IsValid)
-            {
-                if (imageModel.ImageFile != null && imageModel.ImageFile.Length > 0)
-                {
-                    var imagePath = @"\Upload\Images\";
-                    var uploadPath = _hostEnvironment.WebRootPath + imagePath;
-
-                    //Create Directory
-                    if (!Directory.Exists(uploadPath))
-                    {
-                        Directory.CreateDirectory(uploadPath);
-                    }
-
-                    //Create Uniq file name
-                    var uniqFileName = Guid.NewGuid().ToString();
-                    var fileName = Path.GetFileName(uniqFileName + "." + imageModel.ImageFile.FileName.Split(".")[1].ToLower());
-                    imageModel.ImageName = fileName;
-                    string fullPath = uploadPath + fileName;
-                    imagePath = imagePath + @"\";
-                    var filePath = @".." + Path.Combine(imagePath, fileName);
-
-                    using (var fileStream = new FileStream(fullPath, FileMode.Create))
-                    {
-                        await imageModel.ImageFile.CopyToAsync(fileStream);
-                    }
-                    //Insert record
-                    //context.Images.Add(imageModel);
-                    //await context.SaveChangesAsync();
-                    return RedirectToAction(nameof(Index));
-                }
-
-            }
-
-            return View(imageModel);
-        }
-
-           */
     }
 }

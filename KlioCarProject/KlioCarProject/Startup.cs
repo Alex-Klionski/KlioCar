@@ -48,17 +48,12 @@ namespace KlioCarProject
                 options.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
   
             services.AddSignalR();
-            
-            /*
-            services.AddDbContext<ImageDbContext>(options =>
-               options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
-           */
+           
 
             services.ConfigureApplicationCookie(opts => opts.LoginPath = "/Users/Login");
 
             services.AddIdentity<AppUser, IdentityRole>(opts => {
                 opts.User.RequireUniqueEmail = true;
-                //opts.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyz";
                 opts.Password.RequiredLength = 6;
                 opts.Password.RequireNonAlphanumeric = false;
                 opts.Password.RequireLowercase = false;
@@ -112,13 +107,6 @@ namespace KlioCarProject
                 endpoints.MapHub<ChatHub>("/chat");
             });
             
-            /*
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapHub<ChatHub>("/chat");
-                endpoints.MapControllers();
-            });
-            */
             //Navigation
 
             app.UseMvc(routes =>
@@ -153,9 +141,7 @@ namespace KlioCarProject
 
            
             SeedData.EnsurePopulated(app);
-            //ImageDbContext.EnsurePopulated(app);
             AppIdentityDbContext.CreateAdminAccount(app.ApplicationServices, Configuration).Wait();
-            // IdentitySeedData.EnsurePopulated(app);
         }
     }
 }

@@ -1,31 +1,4 @@
 ﻿@model Car
-<!--
-<div class="card card-outline-primary m-1 p-1">
-    <div class="bg-faded p-1">
-        <h4>
-            @Model.Model
-            <span class="badge badge-pill badge-primary" style="float:right">
-                <small>@Model.Price.ToString("c")</small>
-            </span>
-        </h4>
-    </div>
-    <form id="@Model.
-    " asp-action="AddToCart"
-          asp-controller="Cart" method="post">
-        <input type="hidden" asp-for="CarID" />
-        <input type="hidden" name="returnUrl"
-               value="@ViewContext.HttpContext.Request.PathAndQuery()" />
-        <img src="@("~/Upload/Images/" + Model.ImageName)" asp-append-version="true" width="500px" height="300px" />
-        <span class="card-text p-1">
-            @Model.Engine
-            <button type="submit"
-                    class="btn btn-success btn-sm pull-right" style="float:right">
-                Add To Cart
-            </button>
-        </span>
-    </form>
-</div>
- -->
 
 <section class="layout__region layout-builder--layout__region showcase-screen feature" id="showcase--oMA-XozZc-k" data-gtm-event="element-scroll" data-gtm-drawer="showcase--oMA-XozZc-k" data-color-theme="dark" data-static-nav-color="invert" data-drawer-static-nav-color="default" data-title="@Model.Model">
     <div data-layout-content-preview-placeholder-label="&quot;Hero (showcase)&quot; block" class="block block-layout-builder block-inline-blockhero-showcase">
