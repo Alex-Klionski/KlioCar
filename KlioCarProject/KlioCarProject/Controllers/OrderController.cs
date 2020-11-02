@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using MimeKit;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
 
 namespace KlioCarProject.Controllers
 {
@@ -17,12 +18,14 @@ namespace KlioCarProject.Controllers
         private IOrderRepository repository;
         private UserManager<AppUser> userManager;
         private Cart cart;
+        private readonly IConfiguration _configuration;
 
         [ActivatorUtilitiesConstructor]
-        public OrderController(IOrderRepository repoService, Cart cartService, UserManager<AppUser> usrMng)
+        public OrderController(IOrderRepository repoService, Cart cartService, UserManager<AppUser> usrMng, IConfiguration configuration)
         {
             repository = repoService;
             cart = cartService;
+            this._configuration = configuration;
             userManager = usrMng;
         }
         public OrderController(IOrderRepository repoService, Cart cartService)
@@ -48,7 +51,7 @@ namespace KlioCarProject.Controllers
                 if (User.Identity.IsAuthenticated)
                 {
                     MimeMessage message = new MimeMessage();
-                    message.From.Add(new MailboxAddress("Order KlioCar", "asd@ad.ru"));
+                    message.From.Add(new MailboxAddress("Order KlioCar", "Congrats"));
                     AppUser user = await userManager.FindByNameAsync(order.Name);
                     message.To.Add(new MailboxAddress(user.Email));
                     string model = null;
@@ -62,7 +65,7 @@ namespace KlioCarProject.Controllers
                     using (MailKit.Net.Smtp.SmtpClient client = new MailKit.Net.Smtp.SmtpClient())
                     {
                         client.Connect("smtp.gmail.com", 465, true);
-                        client.Authenticate("asp.email.kliocar@gmail.com", "nKfOm87123");
+                        client.Authenticate(_configuration["EmailData:Email"], _configuration["EmailData:Password"]);
                         client.Send(message);
                         client.Disconnect(true);
                     }
@@ -89,7 +92,7 @@ namespace KlioCarProject.Controllers
                 if (User.Identity.IsAuthenticated)
                 {
                     MimeMessage message = new MimeMessage();
-                    message.From.Add(new MailboxAddress("Order KlioCar", "asd@ad.ru"));
+                    message.From.Add(new MailboxAddress("Order KlioCar", "Congrats"));
                     AppUser user = await userManager.FindByNameAsync(User.Identity.Name);
                     message.To.Add(new MailboxAddress(user.Email));
 

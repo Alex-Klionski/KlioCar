@@ -22,7 +22,17 @@ namespace KlioCarProject
     {
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
-        public Startup(IConfiguration configuration) => Configuration = configuration;
+        public Startup(IConfiguration configuration, IHostEnvironment env)
+        {
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddEnvironmentVariables();
+
+            Configuration = builder.Build();
+        }
+         
         public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services)
         {
@@ -42,7 +52,6 @@ namespace KlioCarProject
             //Add databases
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
 
             services.AddDbContext<AppIdentityDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
@@ -71,8 +80,8 @@ namespace KlioCarProject
             services.AddAuthentication()
                .AddGoogle(options =>
                {
-                   options.ClientId = "543062444631-vvs36s1dce29l1vct1mjdi2unl9pqvit.apps.googleusercontent.com";
-                   options.ClientSecret = "TCXuAn9IDdEig5MOiJj4CQBr";
+                   options.ClientId = Configuration["GoogleAuth:ClientId"];
+                   options.ClientSecret = Configuration["GoogleAuth:ClientSecret"];
                });
  
         }
@@ -100,46 +109,32 @@ namespace KlioCarProject
             app.UseStaticFiles();
            // app.UseStatusCodePages();
             app.UseSession();
-           
+
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                    name: null,
+                    pattern: "{category}/Page{productPage:int}",
+                    defaults: new { controller = "Car", action = "List" });
+                endpoints.MapControllerRoute(
+                    name: null,
+                    pattern: "Page{productPage:int}",
+                    defaults: new { controller = "Car", action = "List", productPage = 1 });
+                endpoints.MapControllerRoute(
+                    name: null,
+                    pattern: "{category}",
+                    defaults: new { controller = "Car", action = "List", productPage = 1 });
+                endpoints.MapControllerRoute(
+                    name: null,
+                    pattern: "",
+                    defaults: new { controller = "Car", action = "List", productPage = 1 });
+                endpoints.MapControllerRoute(
+                    name: "defaults",
+                    pattern: "{controller}/{action}/{id?}");
                 endpoints.MapRazorPages();
                 endpoints.MapHub<ChatHub>("/chat");
             });
             
-            //Navigation
-
-            app.UseMvc(routes =>
-            {    
-            routes.MapRoute(
-                name: null,
-                template: "{category}/Page{productPage:int}",
-                defaults: new { controller = "Car", action = "List" }
-                );
-                
-            routes.MapRoute(
-                 name: null,
-                 template: "Page{productPage:int}",
-                 defaults: new { controller = "Car", action = "List", productPage = 1 }
-                 );
-            
-            routes.MapRoute(
-                name: null,
-                template: "{category}",
-                defaults: new { controller = "Car", action = "List", productPage = 1 }
-                );
-               
-            routes.MapRoute(    
-                 name: null,
-                 template: "",
-                 defaults: new { controller = "Car", action = "List", productPage = 1 }
-                 );
-                
-                routes.MapRoute(name: null, template: "{controller}/{action}/{id?}");
-            });
-            
-
-           
             SeedData.EnsurePopulated(app);
             AppIdentityDbContext.CreateAdminAccount(app.ApplicationServices, Configuration).Wait();
         }

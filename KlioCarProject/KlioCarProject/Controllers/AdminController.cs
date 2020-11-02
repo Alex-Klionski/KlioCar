@@ -12,6 +12,7 @@ using System.IO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
 
 namespace KlioCarProject.Controllers
 {
@@ -24,20 +25,21 @@ namespace KlioCarProject.Controllers
         private IUserValidator<AppUser> userValidator;
         private IPasswordValidator<AppUser> passwordValidator;
         private IPasswordHasher<AppUser> passwordHasher;
+        private readonly IConfiguration _configuration;
 
 
         private readonly IWebHostEnvironment _hostEnvironment;
         private readonly ApplicationDbContext context;
 
         [ActivatorUtilitiesConstructor]
-        public AdminController(ICarRepository repo, UserManager<AppUser> usrMng, IPasswordValidator<AppUser> passValid, IPasswordHasher<AppUser> passHasher, IUserValidator<AppUser> userValid, IWebHostEnvironment hostEnvironment, ApplicationDbContext _context)
+        public AdminController(ICarRepository repo, UserManager<AppUser> usrMng, IPasswordValidator<AppUser> passValid, IPasswordHasher<AppUser> passHasher, IUserValidator<AppUser> userValid, IWebHostEnvironment hostEnvironment, ApplicationDbContext _context, IConfiguration configuration)
         {
             repository = repo; 
             userManager = usrMng;
             passwordValidator = passValid;
             userValidator = userValid;
             passwordHasher = passHasher;
-
+            this._configuration = configuration;
             this._hostEnvironment = hostEnvironment;
             context = _context;
         }
@@ -172,7 +174,7 @@ namespace KlioCarProject.Controllers
 
                 if (car.ImageFile != null && car.ImageFile.Length > 0)
                 {
-                    var imagePath = @"\Upload\Images\";
+                    var imagePath = @_configuration["ImageSettings:Path"];
                     var uploadPath = _hostEnvironment.WebRootPath + imagePath;
 
                     //Create Directory

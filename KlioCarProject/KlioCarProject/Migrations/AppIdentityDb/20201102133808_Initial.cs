@@ -2,7 +2,7 @@
 
 namespace KlioCarProject.Migrations.AppIdentityDb
 {
-    public partial class test : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
