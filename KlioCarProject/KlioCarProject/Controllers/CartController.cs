@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -52,13 +52,12 @@ namespace KlioCarProject.Controllers
 
         private Cart GetCart()
         {
-            Cart cart = HttpContext.Session.GetJson<Cart>("Cart") ?? new Cart();
-
+            Cart cart = SessionHelper.GetObjectFromJson<Cart>(HttpContext.Session, "Cart") ?? new Cart();
             return cart;
         }
         private void SaveCart(Cart cart)
         {
-            HttpContext.Session.SetJson("Cart", cart);
+            SessionHelper.SetJson(HttpContext.Session, "Cart", cart);
         }
     }
 

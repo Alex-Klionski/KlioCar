@@ -1,4 +1,6 @@
 ﻿@model Car
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
 <style>
     /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
@@ -27,7 +29,7 @@
     </div>
 
     <form asp-action="Details" asp-controller="Car" method="post">
-        <img src="@("~/Upload/Images/" + Model.ImageName)" asp-append-version="true" width="500px" height="300px" />
+        <img src="@(@Configuration["ImageSettings:Path"] + Model.ImageName)" asp-append-version="true" width="500px" height="300px" />
         <span class="card-text p-1">
             @Model.Engine
         </span>
@@ -37,10 +39,13 @@
 <div style="margin-top:15px;">
     <a asp-action="List" asp-controller="Car" class="btn btn-success btn-lg" style="float:left">Back</a>
     <form asp-action="ChatList" asp-controller="Car" method="post">
-        <div style="margin-left:10px;">
-            <input type="hidden" asp-for="CarID" />
-            <button type="submit" style="margin-left:10px;" class="btn btn-outline-success btn-lg" title="ChatList">Chat</button>
-        </div>
+        @if (User?.Identity?.IsAuthenticated != false)
+        {
+            <div style="margin-left:10px;">
+                <input type="hidden" asp-for="CarID" />
+                <button type="submit" style="margin-left:10px;" class="btn btn-outline-success btn-lg" title="ChatList">Chat</button>
+            </div>
+        }
     </form>
 
 </div>

@@ -43,6 +43,7 @@ namespace KlioCarProject
 
             // Registration session
             services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
+
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddTransient<ICarRepository, EFCarRepository>();

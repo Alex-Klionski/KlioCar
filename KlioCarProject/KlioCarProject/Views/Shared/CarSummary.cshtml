@@ -1,10 +1,12 @@
 ﻿@model Car
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
 
 <section class="layout__region layout-builder--layout__region showcase-screen feature" id="showcase--oMA-XozZc-k" data-gtm-event="element-scroll" data-gtm-drawer="showcase--oMA-XozZc-k" data-color-theme="dark" data-static-nav-color="invert" data-drawer-static-nav-color="default" data-title="@Model.Model">
     <div data-layout-content-preview-placeholder-label="&quot;Hero (showcase)&quot; block" class="block block-layout-builder block-inline-blockhero-showcase">
         <section data-gtm-key="tesla-hero-showcase-storage" class="hero hero--default hero--with-disclaimer" id="tesla-hero-showcase-storage" style="--media-height: 100vh;">
             <picture class="hero-image">
-                <img src="@("~/Upload/Images/" + Model.ImageName)" asp-append-version="true" />
+                <img src="@(@Configuration["ImageSettings:Path"] + Model.ImageName)" asp-append-version="true" />
             </picture>
             <div class="hero-regions--wrapper">
                 <div class="hero-regions">

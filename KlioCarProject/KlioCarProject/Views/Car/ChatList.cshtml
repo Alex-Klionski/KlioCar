@@ -1,26 +1,29 @@
 ﻿@model Car
-<body>
-    <h1>Discussion @Model.Model</h1>
-    <div id="loginBlock">
-        Your Name:<br />
-        <input id="userName" type="text" />
-        <input id="loginBtn" type="button" value="Войти" />
-    </div><br />
+    <body>
+        <h1>Discussion @Model.Model</h1>
+        <div id="loginBlock">
+            <h2><strong>Hello, @User.Identity.Name</strong></h2><br />
+        <!--
+            <input id="userName" type="text" />
+            <input id="loginBtn" type="button" value="Войти" />
+        -->
+        </div><br />
 
-    <div id="header"></div><br />
+        <div id="header"></div><br />
 
-    <div id="inputForm">
-        <input type="text" id="message" />
-        <input type="button" id="sendBtn" value="Submit" />
-    </div>
-    <div id="chatroom"></div>
-    <script src="~/js/signalr/dist/browser/signalr.min.js"></script>
-    <script>
+        <div id="inputForm">
+            <input type="text" id="message" />
+            <input type="button" id="sendBtn" value="Submit" />
+        </div>
+ 
+        <div id="chatroom"></div>
+        <script src="~/js/signalr/dist/browser/signalr.min.js"></script>
+        <script>
         const hubConnection = new signalR.HubConnectionBuilder()
             .withUrl("/chat")
             .build();
 
-        let userName = '';
+            let userName = '@User.Identity.Name';
         // получение сообщения от сервера
         hubConnection.on('Send', function (message, userName) {
 
@@ -37,12 +40,13 @@
             document.getElementById("chatroom").insertBefore(elem, firstElem);
 
         });
-
+       
         // установка имени пользователя
-        document.getElementById("loginBtn").addEventListener("click", function (e) {
-            userName = document.getElementById("userName").value;
-            document.getElementById("header").innerHTML = '<h3>Welcome ' + userName + '</h3>';
-        });
+       // document.getElementById("loginBtn").addEventListener("click", function (e) {
+           //userName = document.getElementById("userName").value;
+       //     document.getElementById("header").innerHTML = '<h3>Welcome ' + '@User.Identity.Name' + '</h3>';
+       // });
+        
         // отправка сообщения на сервер
         document.getElementById("sendBtn").addEventListener("click", function (e) {
             let message = document.getElementById("message").value;
@@ -50,6 +54,6 @@
         });
 
         hubConnection.start();
-    </script>
-</body>
+        </script>
+    </body>
 </html>
